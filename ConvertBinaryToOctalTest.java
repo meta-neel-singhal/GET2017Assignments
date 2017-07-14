@@ -21,6 +21,10 @@ public class ConvertBinaryToOctalTest {
 	 public void evaluatesExpression3() {
 	   ConvertBinaryToOctal binToOct = new ConvertBinaryToOctal();
 	   int octal = binToOct.convertBinaryToOctal(12340000);
-	   assertEquals(0, octal);
+	   String errorMessage = null;
+	   if (octal == 8){
+		   errorMessage = "Please insert a binary value!!!";
+	   }
+	   assertEquals(errorMessage, "Please insert a binary value!!!");
 	 }
 }

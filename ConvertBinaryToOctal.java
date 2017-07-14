@@ -1,8 +1,22 @@
+/**
+ * This program is to convert a binary number to an octal number.
+ * @author Neel
+ * 
+ */
 public class ConvertBinaryToOctal {
+	/**
+	 * This function converts binary number by taking pairs of 3 digits and then
+	 * converting them to it their respective octal values using switch case statements.
+	 * @param n
+	 * @return octal value
+	 */
 
-	public int convertBinaryToOctal(int n){
+	public int convertBinaryToOctal(int n) {
 		
-		int triad, flag = 0, octal = 0, count = 1;
+		int triad; // This variable stores the pair of 3 digits of given binary number.
+		int flag = 0; // This variable contains octal value of the triad.
+		int octal = 0; // This variable is the final octal value of the binary number.
+		int count = 1; // This variable is used for placing the octal value at unit's place, ten's place and so on.
 		
 		while (n > 0){
 			triad = n % 1000;
@@ -25,13 +39,16 @@ public class ConvertBinaryToOctal {
 				break;
 			case 111: flag = 7;
 				break;
-			default: System.out.println("Please provide a binary number.");
-				System.exit(0);
+			default: flag = 8;
 				break;
 			}
-			
-			octal += flag * count;
-			count *= 10;
+			if(flag!=8){
+				octal += flag * count;
+				count *= 10;
+			}
+			else{
+				octal = 8;
+			}
 		}
 		return octal;
 }
