@@ -1,10 +1,26 @@
+/**
+ * To find longest increasing sequence from an array of n integer values 
+ * @author Neel
+ */
 public class LongestSequence {
-
+	/**
+	 * Finds the longest sequence in input array by initially finding length of 
+	 * largest sequence (max) using a variable count and thereby getting the 
+	 * start index of the largest sequence and hence display it.
+	 * @param input array
+	 * @return sequence of largest length
+	 */
 	public int[] longestSequence(int input[]){
-		int size = input.length, count = 1, i, max = 0, index = 0, k=0;
+		int size = input.length;
+		int count = 1; // helps to get length of largest sequence
+		int i; // for index value of initial sequence
+		int max = 0; // length of largest sequence
+		int index = 0; // end index of largest sequence
+		int k = 0; // for index value of final sequence
 
-		for (i=0; i < size - 1; i++){
-			if ((input[i] < input[i+1])){
+		// gives length of largest sequence
+		for (i = 0; i < size - 1; i++){
+			if ((input[i] < input[i + 1])){
 				count++;
 			}
 			else{
@@ -15,24 +31,20 @@ public class LongestSequence {
 				}
 			}
 		}
-			
+
 		if (count > max){
 			max = count;
 			count = 1;
 			index = i;
 		}
-				
-		int seq[] = new int[max];
+
+		// finds the largest sequence
+		int sequence[] = new int[max];
 		for (int j = (index - max + 1); j <= index; j++){
-			seq[k] = input[j];
+			sequence[k] = input[j];
 			k++;
 		}
-		/*for (int j = (index - max + 1); j <= index; j++){
-			System.out.println(input[j]);
-		}
-		System.out.println(max);
-		System.out.println(index);
-		*/
-		return seq;
+
+		return sequence; // return largest sequence
 	}
 }

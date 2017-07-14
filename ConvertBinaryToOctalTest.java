@@ -3,6 +3,7 @@ import org.junit.Test;
 
 public class ConvertBinaryToOctalTest {
 
+	// Positive test case
 	@Test
 	public void evaluatesExpression1() {
 		ConvertBinaryToOctal binToOct = new ConvertBinaryToOctal();
@@ -10,15 +11,15 @@ public class ConvertBinaryToOctalTest {
 		assertEquals(122, octal);
 	}
 
+	// Negative test case
 	@Test
 	public void evaluatesExpression2() {
 		ConvertBinaryToOctal binToOct = new ConvertBinaryToOctal();
 		int octal = binToOct.convertBinaryToOctal(11010010);
-		assertEquals(322, octal);
+		assertEquals(312, octal);
 	}
 
-	// This is a special case when a non binary number is given as input.
-
+	// Special case when a non binary number is given as input.
 	@Test
 	public void evaluatesExpression3() {
 		ConvertBinaryToOctal binToOct = new ConvertBinaryToOctal();
