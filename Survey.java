@@ -4,7 +4,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-
+/**
+ * Main class that helps to drive all other fuctions.
+ *
+ * @author Neel Singhal
+ */
 public class Survey {
 	public static void main(String args[]) {
 
@@ -30,7 +34,7 @@ public class Survey {
 			percentageOfResponses[questionNumber] += 1;
 		}
 		
-		//will find the percentage of the result
+		// Find the percentage of the result for a particular option.
 		for (int index = 1; index <= 5; index++) {
 			if (percentageOfResponses[index] != 0) {
 				percentageOfResponses[index] = (int)((percentageOfResponses[index] / (float) totalNumberOfUsers) * 100);
@@ -44,8 +48,8 @@ public class Survey {
 		}
 		
 		/**
-		 * for part B problem in which we have to sort
-		 * the given question
+		 * For part B problem in which we have to sort
+		 * the given questions.
 		 * 
 		 */
 		question = questionObject.readFile("C:/Users/Neel Singhal/Desktop/Questions.txt");
