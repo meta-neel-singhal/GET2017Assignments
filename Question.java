@@ -7,25 +7,25 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
+ * Reads the question from the file, process it and writes on the output file.
  * 
- * 
- * @author Neel Singhal Singhal
+ * @author Neel Singhal
  */
 public class Question implements Comparable<Question>{
     String question;
-	
-    public Question(String question) {
+	// Parameterized constructor.
+	public Question(String question) {
 		this.question = question;
 	}
-	
+	// Default constructor.
 	public Question() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	Scanner scanItem = new Scanner(System.in);
 
 	/**
-	 * 
+	 * Reads the file to get the questions and their information.
 	 * 
 	 * @param filePath
 	 * @return
@@ -47,7 +47,8 @@ public class Question implements Comparable<Question>{
 	}
 
 	/**
-	 * 
+	 * Writes on the output file.
+	 *
 	 * @param data
 	 * @param filePath
 	 */
@@ -66,6 +67,12 @@ public class Question implements Comparable<Question>{
 		} catch (Exception exception) {}
 	}
 
+	/**
+	 * Helps to take inputs from the users.
+	 *
+	 * @param participant
+	 * @param questions
+	 */
 	public void takeInputFromUser(int participant, String questions[][]) {
 		for (int rowIndex = 0; rowIndex < questions.length; rowIndex++) {
 			for (int columnIndex = 0; columnIndex <  questions[rowIndex].length; columnIndex++) {
