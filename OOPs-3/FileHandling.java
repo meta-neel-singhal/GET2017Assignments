@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ class FileHandling {
 	public List<String> read(String filePath) {
 		List<String> items = new ArrayList<String>();
 		try {
-			items = Files.readAllLines(Paths.get(filePath));
+			items = Files.readAllLines(Paths.get(filePath), Charset.defaultCharset());
 		} 
 		catch (IOException exception) {
 			System.out.println("File cannot be read.\nTry again!!!");

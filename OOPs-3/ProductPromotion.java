@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Checks if any product promotion is applicable on the purchased products
+ * and gets the discount on the basis of the applicable product promotion.
  * 
  * @author Neel Singhal
  */
@@ -39,7 +41,7 @@ public class ProductPromotion implements Promotion {
 	}
 
 	/**
-	 * 
+	 * Initializes values of the discountAmount and the discountType hash maps.
 	 */
 	public void initProductPromo() {
 		productPromo = new FileHandling().read(Constants.PRODUCT_PROMOTION_PATH);
@@ -60,8 +62,10 @@ public class ProductPromotion implements Promotion {
 	}
 
 	/**
-	 * @param id
-	 * @return
+	 * Checks if any product promotion is applicable on the products ordered.
+	 * 
+	 * @param id    ID of the product.
+	 * @return true if an product promotion is applicable, otherwise false.
 	 */
 	public boolean isApplicable(double id) {
 
@@ -69,7 +73,9 @@ public class ProductPromotion implements Promotion {
 	}
 
 	/**
-	 * @param cart
+	 * Gets the discount amount based on the applicable product promotion, if any.
+	 * 
+	 * @param cart    Contains details about products in the cart.
 	 */
 	public void getDiscount(Cart cart) {
 		double discountPercentage = 0.0;
@@ -93,7 +99,9 @@ public class ProductPromotion implements Promotion {
 	}
 
 	/**
+	 * Overridden toString method to display contents in a following pattern.
 	 * 
+	 * @return result string of desired pattern.
 	 */
 	@Override
 	public String toString() {

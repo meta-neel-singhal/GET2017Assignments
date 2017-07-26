@@ -1,4 +1,5 @@
 /**
+ * Initializes all the products available in the shop.
  * 
  * @author Neel Singhal
  */
@@ -8,10 +9,11 @@ public class Product {
 	private double productPrice;
 
 	/**
+	 * Parameterized constructor to initialize product details.
 	 * 
-	 * @param id
-	 * @param name
-	 * @param price
+	 * @param id       ID of the product.
+	 * @param name     Name of the product.
+	 * @param price    Price of the product.
 	 */
 	public Product(String id, String name, String price) {
 		productId = Integer.parseInt(id);

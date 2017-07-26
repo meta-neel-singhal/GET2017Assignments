@@ -3,7 +3,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 
+ * Checks if any order promotion is applicable on the purchased order
+ * and gets the discount on the basis of the applicable order promotion.
  * 
  * @author Neel Singhal
  */
@@ -25,7 +26,7 @@ public class OrderPromotion implements Promotion {
 	}
 
 	/**
-	 * 
+	 * Initializes values of the discountList and the discountType hash maps.
 	 */
 	public void initializeOrderPromoList() {
 		orderPromoList = new FileHandling().read(Constants.ORDER_PROMOTION_PATH);
@@ -39,7 +40,10 @@ public class OrderPromotion implements Promotion {
 
 
 	/**
-	 * @param totalAmount
+	 * Checks if any order promotion is applicable on the order.
+	 * 
+	 * @param totalAmount    Amount on which an order promotion is to be checked.
+	 * @return true if an order promotion is applicable otherwise false.
 	 */
 	public boolean isApplicable(double totalAmount) {
 		double[] thresholdArray = new double[discountList.size()];
@@ -57,7 +61,9 @@ public class OrderPromotion implements Promotion {
 	}
 
 	/**
-	 * @param cart
+	 * Gets the discount amount based on the applicable order promotion, if any.
+	 * 
+	 * @param cart    Contains details about the cart. 
 	 */
 	public void getDiscount(Cart cart) {
 		double totalAmount = cart.getTotalAmount() - cart.getTotalProductLevelDiscount();
@@ -97,7 +103,9 @@ public class OrderPromotion implements Promotion {
 	}
 
 	/**
+	 * Overridden toString method to display contents in a following pattern.
 	 * 
+	 * @return result string of desired pattern.
 	 */
 	@Override
 	public String toString() {
@@ -106,9 +114,11 @@ public class OrderPromotion implements Promotion {
 		for (String promo : orderPromoList) {
 			promoDetails = promo.split(",");
 			if("OrderFixedAmountPromotion".equals(promoDetails[0])) {
-				result += "Get Rs. " + promoDetails[1] + "  discount on order above - Rs. " + promoDetails[2] + "\n";
+				result += "Get Rs. " + promoDetails[1] + "  discount on order above - Rs. " 
+						+ promoDetails[2] + "\n";
 			}else {
-				result += "Get " + promoDetails[1] + "%  discount on order above - Rs. " + promoDetails[2] + "\n";
+				result += "Get " + promoDetails[1] + "%  discount on order above - Rs. " 
+						+ promoDetails[2] + "\n";
 			}
 		}
 
