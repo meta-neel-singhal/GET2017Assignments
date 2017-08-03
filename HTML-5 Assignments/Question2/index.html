@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML - Assignment 5 - Geo Location</title>
+		<link rel="icon" type="text/css" href="favicon.ico" />
+		<script src="js/check.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	</head>
+	<body onload="check();">
+		<div id="container">
+			<div class="content">
+				<p id="main-heading">Click the button to get your coordinates.</p>
+				<div id="box">
+					<div class="left-box">
+						<button type="button" id="location" onclick="getLocation()" >Get Location</button>
+						<div id="err-msg">
+							<ul class="fa-ul">
+								<li><i class="fa-li fa fa-spinner fa-spin"></i> Loading Your Location</li>
+							</ul>
+						</div>
+					</div>
+					<div class="right-box" id="right-box">
+						<div class="head"><i class="fa fa-map-marker" style="vertical-align:middle;"></i> Your Location</div>
+						<p id="display"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="js/geoLocation.js"></script>
+	</body>
+</html>
