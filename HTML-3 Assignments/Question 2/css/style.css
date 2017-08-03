@@ -8,7 +8,7 @@ body{
 	text-decoration: none;
 	transition: 1s;
 }
-.header,.header-right{display: flex}
+.header,.header-right{display: flex;}
 .second-heading,.section-header{
 	font-size: 20px;
 	font-weight: 700;
@@ -58,9 +58,11 @@ h1{
 	z-index:2;
 	top: 500px;
 	position: relative;
+	padding-bottom:60px;
 }
 .cover-text{padding-top: 20px}
-.cover-button{background: #fff;
+.cover-button{
+	background: #fff;
 	margin: 20px auto auto;
 	padding: 10px;
 	width: 15%;
@@ -143,8 +145,14 @@ input:invalid{border: 1px solid #f00;}
 	transform: translateY(4px);
 }
 .footer{
-	background: rgba(0,0,0,.5);
-	padding: 15px;
+	background: #2d3e50;
 	color: #fff;
 	text-align: center;
+	width: 100%;
+	height: 50px;
+	z-index: 3;
+	padding-top: 20px;
+	position: fixed;
+	bottom: 0px;
+	
 }
