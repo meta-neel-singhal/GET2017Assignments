@@ -3,20 +3,20 @@
 	<head>
 		<title>HTML - Assignment 5 - Geo Location</title>
 		<link rel="icon" type="text/css" href="favicon.ico" />
-		<script src="js/check.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700italic' rel='stylesheet' type='text/css'>	
 	</head>
 	<body onload="check();">
 		<div id="container">
 			<div class="content">
-				<p id="main-heading">Click the button to get your coordinates.</p>
+				<p id="heading">Click the button to get your coordinates.</p>
 				<div id="box">
 					<div class="left-box">
-						<button type="button" id="location" onclick="getLocation()" >Get Location</button>
-						<div id="err-msg">
+						<input type="button" id="location" onclick="getLocation()" value="Get Location" />
+						<div id="loader">
 							<ul class="fa-ul">
-								<li><i class="fa-li fa fa-spinner fa-spin"></i> Loading Your Location</li>
+								<li><i class="fa-li fa fa-spinner fa-spin"></i>Loading Your Location</li>
 							</ul>
 						</div>
 					</div>
@@ -27,6 +27,8 @@
 				</div>
 			</div>
 		</div>
-	<script src="js/geoLocation.js"></script>
+		
+		<script src="js/check.js"></script>
+		<script src="js/geoLocation.js"></script>
 	</body>
 </html>

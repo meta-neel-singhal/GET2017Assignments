@@ -1,8 +1,8 @@
 var show = document.getElementById("display");
-var error = document.getElementById("err-msg");
+var error = document.getElementById("loader");
 
 function getLocation() {
-	var err = document.getElementById("err-msg").style.display = "block";
+	document.getElementById("loader").style.display = "block";
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } 
@@ -10,13 +10,10 @@ function getLocation() {
         error.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-
 function showPosition(position) {
-	var err = document.getElementById("err-msg").style.display = "block";
-	 setTimeout(function(){ 
-	 	x.innerHTML = "<div class='table-white'>Latitude: " + position.coords.latitude + 
-		"</div><div class='table-grey'>Longitude: " + position.coords.longitude + "</div>";
-        var msg = document.getElementById("right-box").style.display = "block";
-        var err = document.getElementById("err-msg").style.display = "none";
-    }, 2000);
+	document.getElementById("loader").style.display = "block";
+    show.innerHTML = "<div>Latitude: " + position.coords.latitude + 
+    "</div><div>Longitude: " + position.coords.longitude + "</div>";
+    document.getElementById("right-box").style.display = "block";
+    document.getElementById("loader").style.display = "none";
 }
