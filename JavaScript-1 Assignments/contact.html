@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript - Session 1 Assignment - Contact</title>
+		<link rel="icon" href="favicon.ico">
+	</head>
+	<body>
+		<!-- Header Table Start -->
+		<table width="75%" id="header" align="center">
+			<tr>
+				<td width="5%">
+					<img src="images/HTML5_logo.png" width="55px" height="55px"/>
+				</td>
+				<td width="95%" align="right">
+					<a href="#" onclick="Home();">Home</a>
+					<a href="#">About</a>
+					<a href="#">Product</a>
+					<a href="#">Gallary</a>
+					<a href="#" onclick="Contact();">Contact</a>	
+				</td>
+			</tr>
+		</table>
+		<!-- Header Table End -->
+		<hr/>
+		<!-- Cover Table Starts -->
+		<table width="75%" id="cover" align="center">
+			<tr align="center">
+				<td>
+					<img src="images/contact_us.jpg" width="900px" height="400px" />
+				</td>
+			</tr>
+		</table>
+		<!-- Cover Table Ends -->
+		<!-- Contact Form Starts -->
+		<form method="post" action="#" id="contact-us" onsubmit="return validateForm()" autocomplete="off">
+			<table align="center" id="userform"	>
+				<tr>
+					<td width="30%"><strong><i>Name</i></strong></td>
+					<td width="70%">
+						<input type="text" name="username" id="username" placeholder="Name" onkeyup="validateName()" />
+					</td>
+				</tr>	
+				<tr>
+					<td width="30%"><strong><i>Email</i></strong></td>
+					<td width="70%">
+						<input type="email" name="useremail" id="useremail" placeholder="Email" onkeyup="validateEmail()" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><strong><i>Cit</i></strong>y</td>
+					<td width="70%">
+						<select name="usercity" id="usercity" onchange="cityOption()">
+							<option  value="default" selected hidden>Select Your City</option>
+							<option value="Jaipur">Jaipur</option>
+							<option value="Udaipur">Udaipur</option>
+							<option value="Alwar">Alwar</option>
+							<option value="Kota">Kota</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">
+						<strong><i>Your selected city is:</i></strong>
+					</td>
+					<td width="70%">
+						<input type="text" id="selectedcity" style="visibility: hidden" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><strong><i>Organisation Name</i></strong></td>
+					<td width="70%">
+						<input type="text" name="userorg" id="userorg" placeholder="Organisation Name" onkeyup="validateOrganization()" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><strong><i>Contact Number</i></strong></td>
+					<td width="70%">
+						<input type="tel" name="usercontact" id="usercontact" placeholder="Contact Number" onkeyup="validatePhoneNumber()" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><strong><i>Message</i></strong></td>
+					<td width="70%">
+						<textarea name="usermessage" id="usermessage" placeholder="Enter your message here" onkeyup="validateMessage()">
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" name="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		</form>
+		<!-- Contact Form End -->
+		<hr/>
+		<!-- Footer Table Start -->
+		<table width="75%" id="footer" align="center">
+			<tr align="center">
+				<td>
+					&copy; Copyright 2016-2017 | All Right Reserved | Metacube Training
+				</td>
+			</tr>
+		</table>	
+		<!-- Footer Table End -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
