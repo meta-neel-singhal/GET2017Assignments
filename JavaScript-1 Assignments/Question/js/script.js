@@ -7,6 +7,7 @@ function Home() {
 
 function validateName(){
 	var data;
+	document.getElementById("username").maxLength="20";
 	if ((data = document.forms["contact-us"]["username"].value) == "" || !data.match( /^[a-zA-z]+$/)){
 		document.forms["contact-us"]["username"].style.border = "2px solid #f00";
 		return false;
@@ -18,7 +19,7 @@ function validateName(){
 
 function validateEmail(){
 	var data;	
-	if((data = document.forms["contact-us"]["useremail"].value) == "" || !data.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)){
+	if((data = document.forms["contact-us"]["useremail"].value) == "" || !data.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$/)){
 		document.forms["contact-us"]["useremail"].style.border = "2px solid #f00";
 		return false;
 	} else{
@@ -51,7 +52,8 @@ function validatePhoneNumber(){
 
 function validateMessage(){
 	var data;
-    if((data = document.forms["contact-us"]["usermessage"].value) == "" || data.length > 250){
+	document.getElementById("usermessage").maxLength="250";
+    if((data = document.forms["contact-us"]["usermessage"].value) == ""){
         document.forms["contact-us"]["usermessage"].style.border = "2px solid #f00";
         return false;
 	} else{
@@ -87,4 +89,20 @@ function cityOption(){
 		document.getElementById("selectedcity").value = selectedValue;
 		return true;
 	}
+}
+
+function isNumberKey(event){
+	var charCode = (event.which) ? event.which : event.keyCode;
+	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+		return false;
+	}
+	return true;
+}
+
+function isText(event){
+	var charCode = (event.which) ? event.which : event.keyCode;
+	if (!(charCode < 48 || charCode > 57)){
+		return false;
+	}
+	return true;
 }

@@ -23,7 +23,7 @@
 		<!-- Header Table End -->
 		<hr/>
 		<!-- Cover Table Starts -->
-		<table width="75%" id="cover" align="center">
+		<table id="cover" align="center">
 			<tr align="center">
 				<td>
 					<img src="images/contact_us.jpg" width="900px" height="400px" />
@@ -35,20 +35,25 @@
 		<form method="post" action="#" id="contact-us" onsubmit="return validateForm()" autocomplete="off">
 			<table align="center" id="userform"	>
 				<tr>
-					<td width="30%"><strong><i>Name</i></strong></td>
-					<td width="70%">
-						<input type="text" name="username" id="username" placeholder="Name" onkeyup="validateName()" />
-					</td>
-				</tr>	
-				<tr>
-					<td width="30%"><strong><i>Email</i></strong></td>
-					<td width="70%">
-						<input type="email" name="useremail" id="useremail" placeholder="Email" onkeyup="validateEmail()" />
+					<td colspan="2" text-align="left">
+						<font color="#f00" size="2px"><strong><i><sup>*</sup>All fields are necessary.</i></strong></font>
 					</td>
 				</tr>
 				<tr>
-					<td width="30%"><strong><i>City</i></strong></td>
-					<td width="70%">
+					<td width="50%"><strong><i>Name</i></strong></td>
+					<td width="50%">
+						<input type="text" id="username" placeholder="Name" onkeyup="validateName()" onkeypress="return isText(event)" />
+					</td>
+				</tr>	
+				<tr>
+					<td width="50%"><strong><i>Email</i></strong></td>
+					<td width="50%">
+						<input type="text" id="useremail" placeholder="Email" onkeyup="validateEmail()" />
+					</td>
+				</tr>
+				<tr>
+					<td width="50%"><strong><i>City</i></strong></td>
+					<td width="50%">
 						<select name="usercity" id="usercity" onchange="cityOption()">
 							<option  value="default" selected hidden>Select Your City</option>
 							<option value="Jaipur">Jaipur</option>
@@ -59,29 +64,29 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="30%">
-						<strong><i>Your selected city is:</i></strong>
+					<td width="50%">
+						<strong><i>Your selected city</i></strong>
 					</td>
-					<td width="70%">
+					<td width="50%">
 						<input type="text" id="selectedcity" style="visibility: hidden" readonly>
 					</td>
 				</tr>
 				<tr>
-					<td width="30%"><strong><i>Organisation Name</i></strong></td>
-					<td width="70%">
-						<input type="text" name="userorg" id="userorg" placeholder="Organisation Name" onkeyup="validateOrganization()" />
+					<td width="50%"><strong><i>Organisation Name</i></strong></td>
+					<td width="50%">
+						<input type="text" id="userorg" placeholder="Organisation Name" onkeyup="validateOrganization()" onkeypress="return isText(event)" />
 					</td>
 				</tr>
 				<tr>
-					<td width="30%"><strong><i>Contact Number</i></strong></td>
-					<td width="70%">
-						<input type="tel" name="usercontact" id="usercontact" placeholder="Contact Number" onkeyup="validatePhoneNumber()" />
+					<td width="50%"><strong><i>Contact Number</i></strong></td>
+					<td width="50%">
+						<input type="tel" id="usercontact" placeholder="Contact Number" onkeyup="validatePhoneNumber()" onkeypress="return isNumberKey(event)" />
 					</td>
 				</tr>
 				<tr>
-					<td width="30%"><strong><i>Message</i></strong></td>
-					<td width="70%">
-						<textarea name="usermessage" id="usermessage" placeholder="Enter your message here" onkeyup="validateMessage()"></textarea>
+					<td width="50%"><strong><i>Message</i></strong></td>
+					<td width="50%">
+						<textarea id="usermessage" placeholder="Enter your message here" onkeyup="validateMessage()"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -92,7 +97,7 @@
 		<!-- Contact Form End -->
 		<hr/>
 		<!-- Footer Table Start -->
-		<table width="75%" id="footer" align="center">
+		<table id="footer" align="center">
 			<tr align="center">
 				<td>
 					&copy; Copyright 2016-2017 | All Right Reserved | Metacube Training
