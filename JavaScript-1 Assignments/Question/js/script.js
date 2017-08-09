@@ -159,7 +159,7 @@ function isText(event) {
 	return true;
 }
 */
-
+/*
 function isText(event) {
 	var result = {};
 	if (isNaN(String.fromCharCode(event.keyCode))) {
@@ -169,4 +169,4 @@ function isText(event) {
 	}
 
 	return result;
-}
+}*/
