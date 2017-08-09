@@ -1,108 +1,172 @@
-function Contact() {
-   window.location = "contact.html";
-}
-function Home() {
-   window.location = "index.html";
-}
+/**
+ * Set up eventListeners when window is loaded.
+ * Helps to se up navigation and check validations on inputs.
+ */
+window.onload = function() {
+	document.getElementById('home').addEventListener('click',function(event){
+		location.href = 'index.html';
+	});
+	document.getElementById('contact').addEventListener('click',function(event){
+		location.href = 'contact.html';
+	});
+	document.getElementById('username').addEventListener('keyup',validateName);
+    document.getElementById('useremail').addEventListener('keyup',validateEmail);
+    document.getElementById('userorg').addEventListener('keyup',validateOrganization);
+	document.getElementById('usercontact').addEventListener('keyup',validatePhoneNumber);
+	document.getElementById('usercity').addEventListener('change',cityOption);
+    document.getElementById('usermessage').addEventListener('keyup',validateMessage);
+	document.getElementById('contact-us').addEventListener('submit',validateForm);
+	//document.getElementById('username').addEventListener('keypress',isText);
+};
 
-function validateName(){
-	var data;
-	document.getElementById("username").maxLength="20";
-	if ((data = document.forms["contact-us"]["username"].value) == "" || !data.match( /^[a-zA-z]+$/)){
-		document.forms["contact-us"]["username"].style.border = "2px solid #f00";
-		return false;
-	} else{
-        document.forms["contact-us"]["username"].style.border = "2px solid #0f0";
-        return true;
+/**
+ * Validates the name input.
+ */
+function validateName() {
+	var data = document.forms['contact-us']['username'];
+	var result = {};
+	data.maxLength = '20';
+	if ('' === data.value || !data.value.match( /^[a-zA-z]+$/)) {
+		data.style.border = '2px solid #f00';
+		result = false;
+	} else {
+        data.style.border = '2px solid #0f0';
+        result = true;
 	}
+
+	return result;
 }
 
-function validateEmail(){
-	var data;	
-	if((data = document.forms["contact-us"]["useremail"].value) == "" || !data.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$/)){
-		document.forms["contact-us"]["useremail"].style.border = "2px solid #f00";
-		return false;
-	} else{
-	    document.forms["contact-us"]["useremail"].style.border = "2px solid #0f0";
-	    return true;
+/**
+ * Validates the email input.
+ */
+function validateEmail() {
+	var data = document.forms['contact-us']['useremail'];
+	var result = {};
+	if ('' === data.value || !data.value.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$/)) {
+		data.style.border = '2px solid #f00';
+		result = false;
+	} else {
+	    data.style.border = '2px solid #0f0';
+	    result = true;
 	}
+
+	return result;
 }
 
-function validateOrganization(){
-	var data;
-	if((data = document.forms["contact-us"]["userorg"].value) == "" || !data.match(/^[a-zA-z]+$/)){
-	    document.forms["contact-us"]["userorg"].style.border = "2px solid #f00";
-		return false;
-	} else{
-		document.forms["contact-us"]["userorg"].style.border = "2px solid #0f0";
-	    return true;
-	}		
-}
-
-function validatePhoneNumber(){
-	var data;
-    if((data = document.forms["contact-us"]["usercontact"].value) == "" || !data.match(/^[0-9]{6,12}$/)){
-        document.forms["contact-us"]["usercontact"].style.border = "2px solid #f00";
-        return false;
-	} else{
-		document.forms["contact-us"]["usercontact"].style.border = "2px solid #0f0";
-	    return true;
+/**
+ * Validates the organization input.
+ */
+function validateOrganization() {
+	var data = document.forms['contact-us']['userorg'];
+	var result = {};
+	if ('' === data.value || !data.value.match(/^[a-zA-z]+$/)) {
+	    data.style.border = '2px solid #f00';
+		result = false;
+	} else {
+		data.style.border = '2px solid #0f0';
+	    result = true;
 	}	
+
+	return result;	
 }
 
-function validateMessage(){
-	var data;
-	document.getElementById("usermessage").maxLength="250";
-    if((data = document.forms["contact-us"]["usermessage"].value) == ""){
-        document.forms["contact-us"]["usermessage"].style.border = "2px solid #f00";
-        return false;
-	} else{
-		document.forms["contact-us"]["usermessage"].style.border = "2px solid #0f0";
-	    return true;
+/**
+ * Validates the contact number input.
+ */
+function validatePhoneNumber() {
+	var data = document.forms['contact-us']['usercontact'];
+	var result = {};
+    if ('' === data.value || !data.value.match(/^[0-9]{6,12}$/)) {
+        data.style.border = '2px solid #f00';
+        result = false;
+	} else {
+		data.style.border = '2px solid #0f0';
+	    result = true;
+	}	
+
+	return result;
+}
+
+/**
+ * Validates the message input.
+ */
+function validateMessage() {
+	var data = document.forms['contact-us']['usermessage'];
+	var result = {};
+	data.maxLength = '250';
+    if ('' === data.value) {
+        data.style.border = '2px solid #f00';
+        result = false;
+	} else {
+		data.style.border = '2px solid #0f0';
+	    result = true;
 	}
+
+	return result;
 }
 
-function validateForm(){
-    if(!validateName() || !validateEmail() || !validateOrganization() || !validateMessage() || !validatePhoneNumber() || !cityOption() ){
-        validateName();
-        validateEmail();
-        validateOrganization();
-        validatePhoneNumber();
-        validateMessage();
-        cityOption();
-        return false;
-    }
-    return true;
+/**
+ * Validates the whole form on submit.
+ */
+function validateForm() {
+    if (!validateName() || !validateEmail() || !cityOption() || !validateOrganization() || !validatePhoneNumber() || !validateMessage()) {
+        result = false;
+    } else {
+    	result = true;
+	}
+	return result;
 }
 
-function cityOption(){
-	document.getElementById("selectedcity").style.visibility = "visible";
-	var element = document.getElementById("usercity");
+/**
+ * Validates the city option.
+ */
+function cityOption() {
+	var data = document.getElementById('selectedcity');
+	var element = document.getElementById('usercity');
 	var selectedValue = element.options[element.selectedIndex].value;
+	var result = {};
+	data.style.visibility = 'visible';
 
-	if(selectedValue == "default"){
-		document.getElementById("usercity").style.border = "2px solid #f00";
-		document.getElementById("selectedcity").value = "No option selected";
-		return false;
-	} else{
-		document.getElementById("usercity").style.border = "2px solid #0f0";
-		document.getElementById("selectedcity").value = selectedValue;
-		return true;
+	if ('default' === selectedValue) {
+		element.style.border = '2px solid #f00';
+		data.value = 'No option selected';
+		result = false;
+	} else {
+		element.style.border = '2px solid #0f0';
+		data.value = selectedValue;
+		result = true;
 	}
+
+	return result;
 }
 
-function isNumberKey(event){
+
+
+/*
+function isNumberKey(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
 	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
 		return false;
 	}
 	return true;
 }
-
-function isText(event){
+function isText(event) {
 	var charCode = (event.which) ? event.which : event.keyCode;
-	if (!(charCode < 48 || charCode > 57)){
+	if (!(charCode < 48 || charCode > 57)) {
 		return false;
 	}
 	return true;
+}
+*/
+
+function isText(event) {
+	var result = {};
+	if (isNaN(String.fromCharCode(event.keyCode))) {
+		result = true;
+	} else {
+		result = false;
+	}
+
+	return result;
 }
