@@ -1,8 +1,5 @@
 package dao;
-import java.util.HashMap;
-
 import model.Product;
-
 
 public interface BaseDao {
 	// HashMap<Integer, Product> productMap = new HashMap<Integer, Product>();

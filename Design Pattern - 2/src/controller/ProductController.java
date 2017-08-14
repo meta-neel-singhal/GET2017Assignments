@@ -1,11 +1,8 @@
 package controller;
 
-import com.metacube.shoppingCart.Enums.Status;
-import com.metacube.shoppingCart.View.DisplayOutput;
-
-import model.Cart;
 import model.Product;
-import view.DisplayInput;
+import utility.StatusEnumerations;
+import view.DisplayOutput;
 import facade.ProductFacade;
 
 public class ProductController {
@@ -16,7 +13,7 @@ public class ProductController {
 			product.addToCart(input);
 		}
 		else {
-			DisplayOutput.checkStatus(Status.NOTAVAILABLE);
+			DisplayOutput.checkStatus(StatusEnumerations.NOTAVAILABLE);
 		}
 	}
 

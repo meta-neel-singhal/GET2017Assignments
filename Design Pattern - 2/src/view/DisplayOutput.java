@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import utility.StatusEnumerations;
 import model.Cart;
+import utility.StatusEnumerations;
 import dao.InMemoryProductDao;
 
 public class DisplayOutput {
@@ -30,9 +30,9 @@ public class DisplayOutput {
 				System.out.println("\nPURCHASED PRODUCTS : ");
 				for (Cart item : cartItems) {
 					System.out.println("Product : "
-							+ InMemoryProductDao.productMap.get(item.getProductId()).getProductId()
+							+ InMemoryProductDao.productMap.get(item.getProductId()).getId()
 							+ " - " + InMemoryProductDao.productMap.get(item.getProductId()).getProductName());
-					System.out.println("Cost : Rs."	+ item.getProductPrice() + "( "
+					System.out.println("Cost : Rs."	+ item.getTotalPrice() + "( "
 							+ InMemoryProductDao.productMap.get(item.getProductId()).getProductPrice()
 							+ " * " + item.getProductQuantity() + " )\n");
 				}
@@ -47,11 +47,11 @@ public class DisplayOutput {
 					switch (val) {
 					case 1:
 						System.out.println("Enter product code you want to remove");
-						String code = scan.next();
-						InMemoryProductDao.removeFromCart(code);
+						int productId = scan.nextInt();
+						InMemoryProductDao.removeFromCart(productId);
 						break;
 					case 2:
-						DisplayInput.getInputFromUser();
+						DisplayInput.getInput();
 						break;
 					case 3:
 						flag = false;
@@ -61,14 +61,14 @@ public class DisplayOutput {
 				break;
 			case 3:
 				cartItems = InMemoryProductDao.getCartItems();
-				total = 0;
-				for (ShoppingCart item : cartItems) {
-					total += item.getPrice();
+				totalPrice = 0;
+				for (Cart item : cartItems) {
+					totalPrice += item.getTotalPrice();
 				}
 				System.out.println("\n########################");
 				System.out.println("YOUR BILL");
 				System.out.println("########################");
-				System.out.println("\nTotal : " + total);
+				System.out.println("\nTotal : " + totalPrice);
 				System.exit(0);
 				break;
 			}

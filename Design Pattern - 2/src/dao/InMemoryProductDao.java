@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.metacube.shoppingCart.Enums.Status;
-import com.metacube.shoppingCart.Model.ShoppingCart;
-import com.metacube.shoppingCart.View.DisplayOutput;
-
 import model.Cart;
 import model.Product;
+import utility.StatusEnumerations;
+import view.DisplayOutput;
 
 public class InMemoryProductDao implements BaseDao, ProductDao {
 	public static HashMap<Integer, Product> productMap = new HashMap<Integer, Product>();
@@ -53,7 +51,7 @@ public class InMemoryProductDao implements BaseDao, ProductDao {
 		return cartItems;
 	}
 	
-	public void removeFromCart(int productId) {
+	public static void removeFromCart(int productId) {
 		boolean flag = true;
 		for (Cart item : cartItems) {
 			if (item.getProductId() == productId) {
@@ -64,7 +62,7 @@ public class InMemoryProductDao implements BaseDao, ProductDao {
 			}
 		}
 		if (flag) {
-			DisplayOutput.checkStatus(Status.NOTSELECTED);
+			DisplayOutput.checkStatus(StatusEnumerations.NOTSELECTED);
 		}
 	}
 }
