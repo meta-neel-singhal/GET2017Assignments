@@ -1,5 +1,10 @@
 package utility;
 
+/**
+ * Enumerations for the types of status of the product.
+ * 
+ * @author Neel Singhal
+ */
 public enum StatusEnumerations {
-		NOTAVAILABLE, NOTSELECTED;
+		NOT_AVAILABLE, NOT_SELECTED;
 }

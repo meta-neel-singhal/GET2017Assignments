@@ -1,14 +1,10 @@
 package model;
 
+/**
+ * Base Entity extended by the product.
+ * 
+ * @author Neel Singhal
+ */
 public class BaseEntity {
-	private int id;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 }

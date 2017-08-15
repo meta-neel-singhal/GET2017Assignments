@@ -1,20 +1,15 @@
 package model;
 
-
+/**
+ * Contain the details of the cart products.
+ * 
+ * @author Neel Singhal
+ */
 public class Cart {
-	// static List<Cart> cartProducts = new ArrayList<Cart>();
 	int productId;
 	int productQuantity;
 	double totalPrice;
-	
-	/*public static List<Cart> getCartProducts() {
-		return cartProducts;
-	}
-	
-	public void addCartProducts() {
-		cartProducts.add(this);
-	}*/
-	
+
 	public int getProductId() {
 		return productId;
 	}

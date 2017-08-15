@@ -1,5 +1,10 @@
 package utility;
 
+/**
+ * Constants class.
+ * 
+ * @author Neel Singhal
+ */
 public class Constants {
 	private Constants() {
 		// Restrict instantiation.

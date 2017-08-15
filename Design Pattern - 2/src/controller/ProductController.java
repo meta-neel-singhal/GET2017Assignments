@@ -5,24 +5,26 @@ import utility.StatusEnumerations;
 import view.DisplayOutput;
 import facade.ProductFacade;
 
+/**
+ * Contact from facade and adds the product to the cart.
+ * 
+ * @author Neel Singhal
+ */
 public class ProductController {
 	ProductFacade product = new ProductFacade();
 
+	/**
+	 * Gets the view content according to the product to be added in the cart.
+	 * 
+	 * @param input    Product to add in the cart.
+	 */
 	public void getView(Product input) {
+		// If the product to add is a valid product in the store.
 		if(product.isValid(input)) {
 			product.addToCart(input);
 		}
 		else {
-			DisplayOutput.checkStatus(StatusEnumerations.NOTAVAILABLE);
+			DisplayOutput.checkStatus(StatusEnumerations.NOT_AVAILABLE);
 		}
 	}
-
-	/*private void addToCart(DisplayInput input) {
-		// TODO Auto-generated method stub
-		Cart cart = new Cart();
-		cart.setProductId(input.productId);
-		cart.setProductQuantity(input.productQuantity);
-		cart.setTotalPrice(product.getPrice(input));
-		cart.addCartProducts();
-	}
-*/}
+}

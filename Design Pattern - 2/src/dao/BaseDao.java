@@ -1,10 +1,15 @@
 package dao;
+import model.BaseEntity;
 import model.Product;
 
+/**
+ * Interface to Add, Delete, Update and Get products.
+ * 
+ * @author Neel Singhal
+ */
 public interface BaseDao {
-	// HashMap<Integer, Product> productMap = new HashMap<Integer, Product>();
 	public Product getProduct(int productId);
-	public void addProduct(Product product);
-	public void updateProduct(Product product);
-	public void deleteProduct(Product product);
+	public void addProduct(BaseEntity product);
+	public void updateProduct(BaseEntity product);
+	public void deleteProduct(BaseEntity product);
 }
