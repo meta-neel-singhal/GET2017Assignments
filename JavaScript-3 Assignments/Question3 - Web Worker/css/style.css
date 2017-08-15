@@ -19,33 +19,19 @@ header, footer{
 }
 
 section{
-    position: relative;
-    margin: 150px auto;
+    margin: 100px auto;
 }
 
-.cover{
-    border: 5px solid #939393;
-    border-radius: 10px;
-    margin: auto;
-    padding: 20px 0px 125px 0px;
-    width: 60%;
-    text-align: center;
-}
-
-#start, #stop, #checkAgain{
+input{
     font-family: 'Cinzel', serif;
     border-radius: 5px;
     padding: 5px;
     background: #83c3dd;
     color: #ffffff;
     font-style: italic;
-    margin: 30px 15px;
+    margin: 30px 50px;
     font-weight: 700;
     font-size: 15px;
-}
-
-#stop{
-    margin: 30px 40px;
 }
 
 footer{
@@ -53,11 +39,52 @@ footer{
     bottom: 0px;
 }
 
-#result{
-    margin: 60px 5px;
-    position: absolute;
-    padding-top: 0px;
-    text-align: center;
-    width: 60%;
+/* Style the div used to display message to user */
+#result, #show{
+    margin: 40px auto;
     font-size: 20px;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 2px solid #999;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f1f1f1;
+    width: 85%;
+    margin: auto;
+}
+
+/* Style the content under the tabs */
+.tabcontent {
+    display: none;
+    padding: 15px 0px;
+    border: 2px solid #999;
+    border-radius: 5px 5px 5px 5px;
+    border-top: none;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Style the buttons in the tab */
+div.tab button {
+    font-family: 'Cinzel', serif;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
 }
