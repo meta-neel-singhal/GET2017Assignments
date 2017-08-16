@@ -9,7 +9,7 @@ var webWorker = {}; // Global variable declaration.
 window.onload = function() {
     showDate();
 
-	document.getElementById('start').addEventListener('click', startWorker);
+    document.getElementById('start').addEventListener('click', startWorker);
     document.getElementById('stop').addEventListener('click', stopWorker);
     document.getElementById('reset').addEventListener('click', reset);
     document.getElementById('hold').addEventListener('click', hold);
@@ -23,8 +23,8 @@ window.onload = function() {
  */
 function startWorker() {
     var result = document.getElementById('result');
-    if ('undefined' !== typeof(Worker)) {
-        if ('object' === typeof(webWorker)) {
+    if ('undefined' !== typeof Worker) {
+        if ('object' === typeof webWorker) {
             webWorker = new Worker('js/web_worker.js');
         }
         // Gets the value of date and time from web_worker.js file.
