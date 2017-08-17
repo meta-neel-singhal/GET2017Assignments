@@ -7,14 +7,14 @@ import java.util.Scanner;
  * 
  * @author Neel Singhal
  */
-public class WebServiceClient{
+public class WebServiceClient {
 	
 	/**
 	 * The main method.
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		FahrenheitToCelsiusServiceLocator locatorObject = new FahrenheitToCelsiusServiceLocator();
 		locatorObject.setFahrenheitToCelsiusEndpointAddress("http://localhost:8080/Web_Service_Assignment_1/services/FahrenheitToCelsius");
 		boolean flag;
@@ -22,9 +22,9 @@ public class WebServiceClient{
 		double temperature;
 		String repeat;
 		// Run until user wants to convert temperature from fahrenheit to celsius.
-		do{
+		do {
 			flag = false;
-			try{
+			try {
 				FahrenheitToCelsius temperatureObject = locatorObject.getFahrenheitToCelsius();
 				System.out.println("Enter temperature in Fahrenheit: ");
 				temperature = scan.nextDouble();
@@ -43,9 +43,11 @@ public class WebServiceClient{
 					break;
 				}
 			}
-			catch (Exception exception) 
-			{
+			catch (Exception exception) {
 				System.out.println(exception.getMessage());
+			}
+			finally {
+				scan.close();
 			}
 		} while (flag);
 	}
