@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="favicon.ico">
+		<title>Web Service - Assignment 2</title>
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<!-- Header starts -->
+		<header>Web Service Assignment</header>
+		<!-- Header ends -->
+
+		<!-- Section starts -->
+		<section id="container" class="form">
+            <div><h1>Create An Employee</h1></div>
+            <form action="http://localhost:8080/Web_Service_-_Assignment_2/rest/EmployeeService/employees/" method="POST" id="createForm" class="content">
+                <ul id="leftForm">
+                    <li><label>Employee ID</label></li>
+                    <li><label>First Name</label></li>
+                    <li><label>Last Name</label></li>
+                    <li><label>Employee Age</label></li>
+                </ul>
+
+                <ul id="rightForm">
+                    <li><input type="text" id="empId" placeholder="Employee ID" pattern="[0-9]{3}" title="Enter 3 digit employee ID." required/></li>
+                    <li><input type="text" id="firstName" placeholder="First Name" pattern="[A-Za-z ]{2,40}" title="Enter only alphabets and range should be 2-40 letters" required/></li>
+                    <li><input type="text" id="lastName" placeholder="Last Name" pattern="[A-Za-z]{2,30}" title="Enter only alphabets and range should be 2-30 letters" required/></li>
+                    <li><input type="text" id="empAge" placeholder="Age" pattern="[0-9]{2}" title="Enter appropriate age." required/></li>
+                </ul>
+                <div class="submit">
+                    <button class="button" type="submit" onclick="createEmployee" form="createForm" value="Submit"><span>Submit</span></button>
+                </div>
+            </form>
+			<div class="result">Message Box !</div>
+		</section>
+		<!-- Section ends -->
+
+		<!-- Footer Starts -->
+		<footer>Created by Neel Kumar Singhal</footer>
+		<!-- Footer ends -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>

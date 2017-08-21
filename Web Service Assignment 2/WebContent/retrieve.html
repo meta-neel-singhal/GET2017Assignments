@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Service - Assignment 2</title>
+		<link rel="icon" href="favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<!-- Header starts -->
+		<header>Web Service Assignment</header>
+		<!-- Header ends -->
+
+		<!-- Section starts -->
+		<section id="container">
+            <!-- Div for tabs -->
+			<div class="tab">
+				<button class="tablinks" onclick="openTab(event,'retrieveById')">Retrieve By ID</button>
+                <button class="tablinks" onclick="openTab(event,'retrieveByName')">Retrieve By Name</button>
+                <button class="tablinks" onclick="openTab(event,'retrieveAll')">Retrieve All</button>
+			</div>
+
+			<!-- Div for contents of "Retrieve By ID" tab -->
+			<div id="retrieveById" class="cover tabcontent">
+				<div><h1>Retrieve An Employee Information By Its ID</h1></div>
+				<div class="content">
+					<div class="label" id="empId">Enter ID of the Employee you want to retrieve:</div>
+					<input type="text" placeholder="Employee ID" pattern="[0-9]{3}" title="Enter 3 digit employee ID" required />
+					<div><button class="button" id="getById"><span>Retrieve </span></button></div>
+				</div>	
+				<div class="result">Your Result Will Appear Here...</div>
+			</div>
+
+			<!-- Div for contents of "Retrieve By Name" tab -->
+			<div id="retrieveByName" class="cover tabcontent">
+				<div><h1>Retrieve An Employee Information By Its ID</h1></div>
+				<div class="content">
+					<div class="label">First Name of the Employee:</div>
+					<input type="text" id="firstName" placeholder="First Name" pattern="[A-Za-z ]{2,40}" title="Enter proper employee Name" required />
+					<div class="label">Last Name of the Employee:</div>
+					<input type="text" id="lastName" placeholder="Last Name" pattern="[A-Za-z]{2,30}" title="Enter proper employee Name" required />
+					<div><button class="button" id="getByName"><span>Retrieve </span></button></div>
+				</div>
+				<div class="result">Your Result Will Appear Here...</div>
+            </div>
+            
+            <!-- Div for contents of "Retrieve All" tab -->
+			<div id="retrieveAll" class="cover tabcontent" onload="getAll">
+				<div class="result">Your Result Will Appear Here...</div>
+				</form>
+			</div>
+		</section>
+		<!-- Section ends -->
+
+		<!-- Footer Starts -->
+		<footer>Created by Neel Kumar Singhal</footer>
+		<!-- Footer ends -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
