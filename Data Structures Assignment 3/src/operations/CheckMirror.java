@@ -1,7 +1,7 @@
 package operations;
 
-import binarytree.Node;
 import menu.Action;
+import binarytree.Node;
 
 /**
  * Checks if two trees are mirror images of each other or not.
@@ -19,20 +19,32 @@ public class CheckMirror implements Action {
 	 */
 	public static boolean checkMirror(Node firstTreeNode, Node secondTreeNode) 
 	{
-		boolean answer;
-		// Base case : Both empty
-		if (firstTreeNode == null && secondTreeNode == null) {
-			answer = true;
-		}
-		// If only one is empty
-		else if (firstTreeNode == null || secondTreeNode == null) {
+		boolean answer = false;
+		int firstTreeInorder[]; // Inorder of the first tree.
+		int secondTreeInorder[]; // Inorder of the second tree.
+
+		InorderTreeTraversal firstTree = new InorderTreeTraversal();
+		InorderTreeTraversal secondTree = new InorderTreeTraversal();
+		
+		firstTreeInorder = firstTree.getInorder(firstTreeNode);
+		secondTreeInorder = secondTree.getInorder(secondTreeNode);
+		int size = firstTreeInorder.length;
+		// Return false if the array size of both the firstTreeInorder and secondTreeInorder is different.
+		if (size != secondTreeInorder.length) {
 			answer = false;
-		}
-		// If both are non-empty, compare left of one tree and right of other tree recursively.
+		} 
 		else {
-			answer = ((firstTreeNode.data == secondTreeNode.data) 
-					&& (checkMirror(firstTreeNode.getLeft(), secondTreeNode.getRight()))
-					&& (checkMirror(firstTreeNode.getRight(), secondTreeNode.getLeft())));
+			// Compare the first array with the reverse of second array.
+			for (int countFirst = 0, countSecond = secondTreeInorder.length - 1; countFirst < size; countFirst++, countSecond--) {
+				// Returns true if all the elements are equal, otherwise false.
+				if (firstTreeInorder[countFirst] == secondTreeInorder[countSecond]) {
+					answer = true;
+				}
+				else {
+					answer = false;
+					break;
+				}
+			}
 		}
 
 		return answer;
@@ -59,9 +71,9 @@ public class CheckMirror implements Action {
 		secondTreeNode.right.right = new Node(4);
 
 		/* 
-		* Check mirror is true if left subtree of first tree is same as the right subtree
-		* of the second tree and vice versa.
-		*/
+		 * Check mirror is true if left subtree of first tree is same as the right subtree
+		 * of the second tree and vice versa.
+		 */
 		answer = checkMirror(firstTreeNode, secondTreeNode);
 		if (answer) {
 			System.out.println("Both the trees are mirror images of each other.");
