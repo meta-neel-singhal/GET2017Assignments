@@ -6,17 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The Class CollegeCounselling.
+ * The CollegeCounseling class to perform the counseling operation.
  * 
  * @author Neel Singhal
  */
-public class CollegeCounselling {
+public class CollegeCounseling {
 	BufferedReader bufferedReader;
 
 	/**
-	 * Constructor to initialize the buffered reader object.
+	 * Default Constructor.
 	 */
-	public CollegeCounselling() {
+	public CollegeCounseling() {
 		bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 	}
 
@@ -26,14 +26,18 @@ public class CollegeCounselling {
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
-		CollegeCounselling collegeCounselling = new CollegeCounselling();
+		int totalSeats;
+		ArrayList<College> collegesList;
+		Queue<Candidate> candidatesQueue;
+		Map<String, String> assignedColleges;
+		CollegeCounseling collegeCounselling = new CollegeCounseling();
 
 		try {
-			System.out.println("Welcome to college counselling process");
-			ArrayList<College> collegesList = collegeCounselling.createListOfColleges();
-			Queue<Candidate> candidatesQueue = collegeCounselling.createQueueOfCandidates();
-			int totalSeats = collegeCounselling.getTotalSeats(collegesList);
-			Map<String, String> assignedColleges = new HashMap<String, String>();
+			System.out.println("Welcome to college counselling process.");
+			collegesList = collegeCounselling.createListOfColleges();
+			candidatesQueue = collegeCounselling.createQueueOfCandidates();
+			totalSeats = collegeCounselling.getTotalSeats(collegesList);
+			assignedColleges = new HashMap<String, String>();
 			assignedColleges = collegeCounselling.collegeCounsellingProcess(collegesList, candidatesQueue, totalSeats);
 			System.out.println("Assigned Colleges: ");
 
@@ -44,82 +48,68 @@ public class CollegeCounselling {
 		} 
 		finally {
 			try {
-				// closing the input stream
+				// Closing the input stream
 				collegeCounselling.bufferedReader.close();
 			}
 			catch (Exception exception) {
-				System.out.println("Something went wrong: "+exception.getMessage());
+				System.out.println("Something went wrong: " + exception.getMessage());
 			}
 		}
 	}
 
 	/**
-	 * This method allots the colleges to student 
-	 * here until all the students are alloted college or all the seats are full,
-	 * the college list is shown to candidate  ,the input is taken from candidate
-	 * for the college they want . If there are seats in that college then it is alloted 
-	 * to them else a different college is asked this process continues until the candidate 
-	 * selects a valid college.
-	 * Finally a map is generated which contains the name of candidates and the college alloted 
-	 * to them which is returned.
+	 * Allots the colleges to student until all the students are alloted college or all the seats are full.
 	 *
-	 * @param collegesList the colleges list
-	 * @param candidatesQueue the candidates queue
-	 * @param totalSeats the total seats
-	 * @return Map consisting candidates and the colleges alloted to them
+	 * @param collegesList       the colleges list
+	 * @param candidatesQueue    the candidates queue
+	 * @param totalSeats         the total seats
+	 * @return Map consisting candidates and the colleges alloted to them.
 	 */
 	public Map<String, String> collegeCounsellingProcess(ArrayList<College> collegesList, Queue<Candidate> candidatesQueue, int totalSeats) {
-		Map<String,String> assignedColleges  = new HashMap<String , String>();
+		Map<String, String> assignedColleges  = new HashMap<String, String>();
 
 		try {
-			// variable for user input
 			int userInput = 0;
-			// variable for candidate name
+			int numberOfSeats;
 			String candidateName = "";
-			// until all the candidates get the seats or all the seats are full
-			while(candidatesQueue.getSize() != 0 && totalSeats != 0){
-				// variable for number of seats
-				int numberOfSeats = 0;
-				// getting the candidate name with the best rank
+
+			// Until all the candidates get the seats or all the seats are full.
+			while (candidatesQueue.getSize() != 0 && totalSeats != 0) {
+				numberOfSeats = 0;
 				candidateName = candidatesQueue.getFront().getCandidateName();
-				// displaying the college list to candidate
 				System.out.println("College List is: ");
-				for(int i = 0 ;i < collegesList.getSize() ; ++i){
+				
+				for (int i = 0 ;i < collegesList.getSize() ; ++i) {
 					College college = collegesList.getElement(i);
 					System.out.println((i+1)+"."+" Name: "+college.getCollegeName() + 
 							" Rank: "+college.getCollegeRank()
 							+" Seats Available: "+college.getCollegeSeats());
 				}
-
-				// taking user input for college they want
+				
 				userInput = getUserInput("Candidate: "+candidateName + " Please enter the college number you want to select");
-				// if user input is greater than the total colleges
-				// print message for invalid input
+				// Check if user input is greater than the total colleges.
 				if (userInput > collegesList.getSize()) {
 					System.out.println("Invalid Input. Try Again");
 				}
-				// else get the total seats in that college
+				// Else get the total seats in that college.
 				else {
 					numberOfSeats = collegesList.getElement(userInput - 1).getCollegeSeats();
 				}
-
-				// if number of seats is greater than zero 
+				
+				/**
+				 *  Check if the college chosen has seats available decrease total seats and no. of seats in that
+				 *  college and dequeue the candidate from the queue and allot him the chosen college.
+				 */
 				if (numberOfSeats > 0) {
-					// subtract the totalSeats by 1
 					totalSeats = totalSeats - 1;
-					// remove candidate name from queue
 					candidateName = candidatesQueue.dequeue().getCandidateName();
-					// assign college to candidate
 					assignedColleges.put(candidateName, collegesList.getElement(userInput - 1).getCollegeName());
-					// reduce the number of seats in that college by 1
-					--numberOfSeats;
-					// create a new object with the updated seats
+					numberOfSeats--;
 					College college = collegesList.getElement(userInput -1 );
 					college.setCollegeSeats(numberOfSeats);
-					// overwrite the list with new object
 					collegesList.overwriteElement(userInput - 1, college);
 				}
-				// if number of seats is less than or equal to zero then display message
+				// If no seats are available in the chosen college.
 				else {
 					System.out.println("The college you entered is already full. Please select another college");
 				}
@@ -127,7 +117,7 @@ public class CollegeCounselling {
 
 		}
 		catch (Exception exception) {
-			System.out.println("Something went wrong: "+exception.getMessage());
+			System.out.println("Something went wrong: " + exception.getMessage());
 		}
 
 		return assignedColleges;
@@ -135,11 +125,11 @@ public class CollegeCounselling {
 
 
 	/**
-	 * this method creates the list of college and returns it.
+	 * Creates the list of colleges.
 	 *
 	 * @return array list of colleges
 	 */
-	public ArrayList<College> createListOfColleges(){
+	public ArrayList<College> createListOfColleges() {
 		ArrayList<College> collegeLists = new ArrayList<College>();
 
 		try {
@@ -157,8 +147,8 @@ public class CollegeCounselling {
 			collegeLists.add(college5);
 			collegeLists.add(college6);
 		}
-		catch (Exception ex) {
-			System.out.println("Something went wrong: "+ex.getMessage());
+		catch (Exception exception) {
+			System.out.println("Something went wrong: " + exception.getMessage());
 			createListOfColleges();
 		}
 
@@ -166,28 +156,27 @@ public class CollegeCounselling {
 	}
 
 	/**
-	 * this method creates the queue of candidate and returns it.
+	 * Creates the queue of candidates.
 	 *
 	 * @return queue of candidate
 	 */
-	public Queue<Candidate> createQueueOfCandidates(){
+	public Queue<Candidate> createQueueOfCandidates() {
 		Queue<Candidate> candidates = new Queue<Candidate>();
 
 		try {
-
-			Candidate candidate1 = new Candidate("Vaibhav1", 1);
-			Candidate candidate2 = new Candidate("Vaibhav2", 2);
-			Candidate candidate3 = new Candidate("Vaibhav3", 3);
-			Candidate candidate4 = new Candidate("Vaibhav4", 4);
-			Candidate candidate5 = new Candidate("Vaibhav5", 5);
-			Candidate candidate6 = new Candidate("Vaibhav6", 6);
-			Candidate candidate7 = new Candidate("Vaibhav7", 7);
-			Candidate candidate8 = new Candidate("Vaibhav8", 8);
-			Candidate candidate9 = new Candidate("Vaibhav9", 9);
-			Candidate candidate10 = new Candidate("Vaibhav10", 10);
-			Candidate candidate11 = new Candidate("Vaibhav11", 11);
-			Candidate candidate12 = new Candidate("Vaibhav12", 12);
-			Candidate candidate13 = new Candidate("Vaibhav13", 13);
+			Candidate candidate1 = new Candidate("Candidate 1", 1);
+			Candidate candidate2 = new Candidate("Candidate 2", 2);
+			Candidate candidate3 = new Candidate("Candidate 3", 3);
+			Candidate candidate4 = new Candidate("Candidate 4", 4);
+			Candidate candidate5 = new Candidate("Candidate 5", 5);
+			Candidate candidate6 = new Candidate("Candidate 6", 6);
+			Candidate candidate7 = new Candidate("Candidate 7", 7);
+			Candidate candidate8 = new Candidate("Candidate 8", 8);
+			Candidate candidate9 = new Candidate("Candidate 9", 9);
+			Candidate candidate10 = new Candidate("Candidate 10", 10);
+			Candidate candidate11 = new Candidate("Candidate 11", 11);
+			Candidate candidate12 = new Candidate("Candidate 12", 12);
+			Candidate candidate13 = new Candidate("Candidate 13", 13);
 
 			candidates.enqueue(candidate1);
 			candidates.enqueue(candidate2);
@@ -203,8 +192,8 @@ public class CollegeCounselling {
 			candidates.enqueue(candidate12);
 			candidates.enqueue(candidate13);
 		}
-		catch (Exception ex) {
-			System.out.println("Something went wrong: "+ex.getMessage());
+		catch (Exception exception) {
+			System.out.println("Something went wrong: " + exception.getMessage());
 			createQueueOfCandidates();
 		}
 
@@ -218,15 +207,15 @@ public class CollegeCounselling {
 	 * @param collegesList the colleges list
 	 * @return total seats available
 	 */
-	public int getTotalSeats(ArrayList<College> collegesList){
+	public int getTotalSeats(ArrayList<College> collegesList) {
 		int totalSeats = 0;
 		try {
-			for(int i = 0 ; i < collegesList.getSize() ; ++i){
+			for (int i = 0; i < collegesList.getSize(); i++) {
 				totalSeats += collegesList.getElement(i).getCollegeSeats();
 			}
 		}
-		catch (Exception ex) {
-			System.out.println("Something went wrong: "+ex.getMessage());
+		catch (Exception exception) {
+			System.out.println("Something went wrong: " + exception.getMessage());
 			getTotalSeats(collegesList);
 		}
 
@@ -236,7 +225,7 @@ public class CollegeCounselling {
 	/**
 	 * Gets the user input.
 	 *
-	 * @param message the message
+	 * @param message     the message
 	 * @return user input
 	 */
 	public int getUserInput(String message) {
@@ -247,13 +236,12 @@ public class CollegeCounselling {
 			while (userInput <= 0) {
 				getUserInput(message);
 			}
-
 		}
 		catch (Exception exception) {
-			System.out.println("Something went wrong: "+exception.getMessage());
+			System.out.println("Something went wrong: " + exception.getMessage());
 			getUserInput(message);
 		}
-		
+
 		return userInput;
 	}
 }

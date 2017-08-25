@@ -1,7 +1,7 @@
 package queue;
 
 /**
- * The Class Candidate.
+ * The Candidate class containing candidate details.
  *
  * @author Neel Singhal
  */
@@ -19,8 +19,8 @@ public class Candidate {
 	/**
 	 * Parameterized constructor to set up the fields of candidate.
 	 *
-	 * @param candidateName the candidate name
-	 * @param candidateRank the candidate rank
+	 * @param candidateName    the candidate name
+	 * @param candidateRank    the candidate rank
 	 */
 	public Candidate(String candidateName , int candidateRank) {
 		this.candidateName = candidateName;
@@ -30,7 +30,7 @@ public class Candidate {
 	/**
 	 * Sets the candidate name.
 	 *
-	 * @param candidateName the new candidate name
+	 * @param candidateName    the new candidate name
 	 */
 	public void setCandidateName(String candidateName) {
 		this.candidateName = candidateName;
@@ -48,7 +48,7 @@ public class Candidate {
 	/**
 	 * Sets the candidate rank.
 	 *
-	 * @param candidateRank the new candidate rank
+	 * @param candidateRank    the new candidate rank
 	 */
 	public void setCandidateRank(int candidateRank) {
 		this.candidateRank = candidateRank;

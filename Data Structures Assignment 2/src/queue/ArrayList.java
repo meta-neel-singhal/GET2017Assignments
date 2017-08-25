@@ -88,7 +88,7 @@ public class ArrayList<T> {
 	public void ensureCapacity(int minCapacity) {
 		// if capacity is less then grow the capacity 
 		if (minCapacity - array.length > 0) {
-			growCapacity(minCapacity);
+			growCapacity();
 		}
 	}
 
@@ -108,7 +108,7 @@ public class ArrayList<T> {
 	 * @param minCapacity this method increases the capacity of array by making a new array with increased capacity
 	 * and transferring the old array into new one
 	 */
-	public void growCapacity(int minCapacity) {
+	public void growCapacity() {
 		array = Arrays.copyOf(array, array.length + MAX);
 	}
 

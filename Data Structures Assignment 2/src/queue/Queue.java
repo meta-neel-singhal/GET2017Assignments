@@ -3,7 +3,7 @@ package queue;
 import java.util.Arrays;
 
 /**
- * Queue Implementation.
+ * Queue Implementation containing all methods related to queue.
  * 
  * @author Neel Singhal
  *
@@ -91,8 +91,6 @@ public class Queue<T> {
 
 	/**
 	 * Increases the capacity of the array whenever required.
-	 * 
-	 * @param minCapacity
 	 */
 	public void growCapacity() {
 		array = Arrays.copyOf(array, array.length + MAX);
@@ -103,7 +101,7 @@ public class Queue<T> {
 	 * 
 	 * @return true, if the queue is empty.
 	 */
-	public boolean isEmpty(){
+	public boolean isEmpty() {
 		boolean flag = false;
 		if (rear == front) {
 			flag = true;

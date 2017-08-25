@@ -1,11 +1,10 @@
 package queue;
 
 /**
- * The Class College.
+ * The College class containing college details.
  * 
  * @author Neel Singhal
  */
-// college class 
 public class College {
 	private String collegeName;
 	private int collegeRank , collegeSeats;
@@ -18,11 +17,11 @@ public class College {
 	}
 
 	/**
-	 * Parameterized constructor for setting up the name , rank and seats of college.
+	 * Parameterized constructor.
 	 *
-	 * @param collegeName the college name
-	 * @param collegeRank the college rank
-	 * @param collegeSeats the college seats
+	 * @param collegeName     the college name
+	 * @param collegeRank     the college rank
+	 * @param collegeSeats    the college seats
 	 */
 	public College(String collegeName, int collegeRank, int collegeSeats) {
 		this.collegeName = collegeName;
