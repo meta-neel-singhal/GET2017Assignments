@@ -28,7 +28,7 @@ public class DoublyLinkedList<T> {
 		boolean flag = false;
 		if (location == 1) {
 			newNode.next = temp;
-			if(temp != null){
+			if(temp != null) {
 				temp.previous = newNode;
 			}
 			this.head = newNode;
@@ -51,7 +51,7 @@ public class DoublyLinkedList<T> {
 				temp=temp.next();
 			}	
 		}
-		
+
 		return flag;	
 	}
 
@@ -94,9 +94,9 @@ public class DoublyLinkedList<T> {
 	public boolean removeItem(T data) {
 		Node<T> temp = this.head;
 		boolean flag = false;
-		if ( size > 0 && head.data.equals(data)) {
+		if (size > 0 && head.data.equals(data)) {
 			head = head.next();
-			if(head != null){
+			if (head != null) {
 				head.previous = null;
 			}
 			size--;
@@ -115,7 +115,7 @@ public class DoublyLinkedList<T> {
 				temp = temp.next();
 			}
 		}
-		
+
 		return flag;
 	}
 
@@ -141,7 +141,7 @@ public class DoublyLinkedList<T> {
 			while (temp != null) {
 				if (index == location) {
 					temp.previous.next = temp.next();
-					if(temp.next != null){
+					if (temp.next != null) {
 						temp.next.previous = temp.previous();
 					}
 					size--;
@@ -151,7 +151,7 @@ public class DoublyLinkedList<T> {
 				temp = temp.next();
 			}
 		}
-		
+
 		return flag;
 	}
 
@@ -171,7 +171,7 @@ public class DoublyLinkedList<T> {
 			temp = temp.next();
 			index++;
 		}
-		
+
 		return (T) "-1";
 	}
 
@@ -201,10 +201,10 @@ public class DoublyLinkedList<T> {
 	public void sort() {
 		Node<T> temp1 = this.head;
 		Node<T> temp2 = null;
-		while ( temp1 != null ) {
+		while (temp1 != null ) {
 			temp2 = temp1.next();
 			while (temp2 != null) {
-				if ( temp1.data.toString().compareTo(temp2.data.toString()) > 0 ) {
+				if (temp1.data.toString().compareTo(temp2.data.toString()) > 0) {
 					T temp = temp1.data;
 					temp1.data = temp2.data;
 					temp2.data = temp;

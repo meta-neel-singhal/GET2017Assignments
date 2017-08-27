@@ -21,7 +21,7 @@ public class DoublyLinkedListTest {
 
 	// Positive Test Case 1.
 	@Test
-	public void addTestCase1(){
+	public void addTestCase1() {
 		linkedList.addNode(5);
 		int expected = linkedList.getElementFromPosition(0);
 		assertEquals(5, expected);
@@ -29,7 +29,7 @@ public class DoublyLinkedListTest {
 
 	// Positive Test Case 2.
 	@Test
-	public void addByIndexTestCase1(){
+	public void addByIndexTestCase1() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		boolean expected = linkedList.addNodeAtLocation(2, 7);
@@ -38,7 +38,7 @@ public class DoublyLinkedListTest {
 
 	// Positive Test Case 3.
 	@Test
-	public void sizeTestCase1(){
+	public void sizeTestCase1() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);
@@ -48,7 +48,7 @@ public class DoublyLinkedListTest {
 
 	// Positive Test Case 4.
 	@Test
-	public void removeElementByPositionTestCase1(){
+	public void removeElementByPositionTestCase1() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);
@@ -58,16 +58,16 @@ public class DoublyLinkedListTest {
 
 	// Positive Test Case 5.
 	@Test
-	public void removeElementTestCase1(){
+	public void removeElementTestCase1() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);
 		assertEquals(true, linkedList.removeItem(8));
 	}
-	
+
 	// Negative Test Case 1.
 	@Test
-	public void addTestCase2(){
+	public void addTestCase2() {
 		linkedList.addNode(5);
 		int expected = linkedList.getElementFromPosition(0);
 		assertNotEquals(0, expected);
@@ -75,7 +75,7 @@ public class DoublyLinkedListTest {
 
 	// Negative Test Case 2.
 	@Test
-	public void addByIndexTestCase2(){
+	public void addByIndexTestCase2() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		boolean expected = linkedList.addNodeAtLocation(2, 7);
@@ -84,7 +84,7 @@ public class DoublyLinkedListTest {
 
 	// Negative Test Case 3.
 	@Test
-	public void sizeTestCase2(){
+	public void sizeTestCase2() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);
@@ -94,7 +94,7 @@ public class DoublyLinkedListTest {
 
 	// Negative Test Case 4.
 	@Test
-	public void removeElementByPositionTestCase2(){
+	public void removeElementByPositionTestCase2() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);
@@ -104,7 +104,7 @@ public class DoublyLinkedListTest {
 
 	// Negative Test Case 5.
 	@Test
-	public void removeElementTestCase2(){
+	public void removeElementTestCase2() {
 		linkedList.addNode(5);
 		linkedList.addNode(6);
 		linkedList.addNode(8);

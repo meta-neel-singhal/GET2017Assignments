@@ -10,7 +10,7 @@ package arraylist;
 public class MyArrayList<T> {
 
 	Object[] array = null;
-	static int MAX = 5;
+	final static int MAX = 5;
 
 	/**
 	 * Instantiates a new my array list.
@@ -25,7 +25,7 @@ public class MyArrayList<T> {
 	 * @param element    Element to be added.
 	 */
 	public void addElement(T element) {
-		if (getSize() == MAX) {
+		if (getSize() == array.length) {
 			this.array = resize(this.array);
 		} 
 		int index = getSize();
@@ -41,11 +41,11 @@ public class MyArrayList<T> {
 	 */
 	public boolean addElementByIndex(int index, T element) {
 		boolean flag;
-		if(index > getSize()){
+		if (index > getSize()) {
 			flag = false;
 		}
 		else {
-			if (getSize() == MAX) {
+			if (getSize() == array.length) {
 				array = resize(array);
 			}
 			for (int count = getSize() - 1; count >= index; count--) {
@@ -54,7 +54,7 @@ public class MyArrayList<T> {
 			array[index] = element;
 			flag = true;
 		}
-		
+
 		return flag;
 	}
 
@@ -66,11 +66,10 @@ public class MyArrayList<T> {
 	 */
 	public Object[] resize(Object[] array) {
 		Object[] newArray = new Object[array.length + MAX];
-		MAX = MAX + array.length;
 		for (int index = 0; index < array.length; index++) {
 			newArray[index] = array[index];
 		}
-		
+
 		return newArray;
 	}
 
@@ -86,7 +85,7 @@ public class MyArrayList<T> {
 				break;
 			}
 		}
-		
+
 		return index;
 	}
 
@@ -103,7 +102,7 @@ public class MyArrayList<T> {
 				return index + 1;
 			}
 		}
-		
+
 		return -1;
 	}
 
@@ -125,7 +124,7 @@ public class MyArrayList<T> {
 			array[getSize() - 1] = null;
 			flag = true;
 		}
-		
+
 		return flag;
 	}
 
@@ -146,7 +145,7 @@ public class MyArrayList<T> {
 				flag = true;
 			}
 		}
-		
+
 		return flag;
 	}
 
@@ -185,16 +184,16 @@ public class MyArrayList<T> {
 	 *
 	 * @return the object[]
 	 */
-	public Object[] printArrayList(){
+	public Object[] printArrayList() {
 		return this.array;
 	}
 
 	/**
 	 * Sort array list.
 	 */
-	public void sortArrayList(){
-		for (int index = 0; index < getSize() ; index++){
-			for (int count = index + 1; count < getSize(); count++){
+	public void sortArrayList() {
+		for (int index = 0; index < getSize() ; index++) {
+			for (int count = index + 1; count < getSize(); count++) {
 				if (((Comparable<T>) array[index]).compareTo((T) array[count]) > 0) {
 					Object temp = array[count];
 					array[count] = array[index];

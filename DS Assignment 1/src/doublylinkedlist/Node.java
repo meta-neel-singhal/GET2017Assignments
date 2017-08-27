@@ -8,7 +8,7 @@ package doublylinkedlist;
  * @param <T> the element type
  */
 public class Node<T> {
-	
+
 	T data;
 	Node<T> next;
 	Node<T>previous;
@@ -42,7 +42,7 @@ public class Node<T> {
 		node.data = data;
 		node.next = null;
 		node.previous = null;
-		
+
 		return node;
 	}
 }

@@ -177,7 +177,7 @@ public class SinglyLinkedList<T> {
 	public void sort() {
 		Node<T> temp1 = this.head;
 		Node<T> temp2 = null;
-		while( temp1 != null) {
+		while(temp1 != null) {
 			temp2 = temp1.next();
 			while (temp2 != null) {
 				if (temp1.data.toString().compareTo(temp2.data.toString()) > 0) {

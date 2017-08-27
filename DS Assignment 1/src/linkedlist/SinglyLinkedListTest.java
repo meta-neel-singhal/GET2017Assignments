@@ -77,7 +77,7 @@ public class SinglyLinkedListTest {
 		int expected = linkedList.getSize();
 		assertEquals(3, expected);
 	}
-	
+
 	// Negative Test Case.
 	@Test
 	public void addElementAtLastTestCase2() {

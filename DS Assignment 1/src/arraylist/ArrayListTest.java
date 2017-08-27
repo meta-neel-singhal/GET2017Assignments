@@ -34,7 +34,7 @@ public class ArrayListTest {
 		obj.addElement(8);
 		assertEquals(3, obj.getSize());
 	}
-	
+
 	// Positive test case 4.
 	@Test
 	public void removeElementByPositionTestCase1() {
@@ -45,7 +45,7 @@ public class ArrayListTest {
 		obj.removeElementFromPosition(1);
 		assertEquals(-1, obj.getElement(6));
 	}
-	
+
 	// Positive test case 5.
 	@Test
 	public void removeElementTestCase1() {
@@ -55,7 +55,7 @@ public class ArrayListTest {
 		obj.addElement(8);
 		assertEquals(true, obj.removeElement(8));
 	}
-	
+
 	// Positive test case 6.
 	@Test
 	public void deleteAllTestCase1() {
@@ -66,7 +66,7 @@ public class ArrayListTest {
 		obj.deleteAllElements();
 		assertEquals(-1, obj.getElement(5));
 	}
-	
+
 	// Positive test case 7.
 	@Test
 	public void reverseArrayTestCase() {

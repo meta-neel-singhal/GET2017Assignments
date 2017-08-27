@@ -8,7 +8,7 @@ package linkedlist;
  * @param <T> the element type
  */
 public class Node<T> {
-	
+
 	T data;
 	Node<T> next;
 
@@ -31,7 +31,7 @@ public class Node<T> {
 		Node<T> node = new Node<T>();
 		node.data = data;
 		node.next = null;
-		
+
 		return node;
 	}
 }

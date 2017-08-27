@@ -21,5 +21,4 @@ public class JoinArrayList<T> extends MyArrayList<T> {
 			firstList.addElement(secondList.getElementByPosition(index));
 		}
 	}
-
 }
