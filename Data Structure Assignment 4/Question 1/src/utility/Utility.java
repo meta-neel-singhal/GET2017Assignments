@@ -17,23 +17,23 @@ public class Utility {
 	 * @param jobs    jobs to print.
 	 */
 	public static void sort(Queue<Task> jobs) {
-		Object arr[] = jobs.toArray();
+		Object array[] = jobs.toArray();
 		try {
-			size = arr.length - 1;
-			heapify(arr);
+			size = array.length - 1;
+			heapify(array);
 			for (int index = size; index >= 0; index--) {
-				swap(arr, 0, index);
-				maxheap(arr, 0);
+				swap(array, 0, index);
+				maxheap(array, 0);
 			}
 			// Again putting the data into the queue.
 			jobs.makeEmpty();
-			size = arr.length;
+			size = array.length;
 			for (int index = 0; index < size; index++) {
-				jobs.enqueue(arr[index]);
+				jobs.enqueue(array[index]);
 			}
 		}
-		catch (Exception e) {
-			System.out.println("Error caught " + e.getMessage());
+		catch (Exception exception) {
+			System.out.println("Error caught " + exception.getMessage());
 		}
 	}
 

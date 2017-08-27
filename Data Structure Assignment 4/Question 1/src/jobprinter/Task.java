@@ -1,6 +1,5 @@
 package jobprinter;
 
-
 /**
  * The Task class containing information about the task.
  * 

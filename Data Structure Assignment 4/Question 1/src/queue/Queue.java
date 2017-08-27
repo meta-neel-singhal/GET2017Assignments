@@ -60,7 +60,7 @@ public class Queue<T extends Object> {
 		if ((rear - elementData.length + 1) > 0) {
 			growCapacity();
 		}
-		elementData[rear++] = item;
+		elementData[++rear] = item;
 
 		size++;
 	}
@@ -100,25 +100,6 @@ public class Queue<T extends Object> {
 		}
 		front = 0;
 		rear = -1;
-	}
-
-	/**
-	 * Overridden toString method to display output in particular format.
-	 */
-	@Override
-	public String toString() {
-		String queue = "[";
-		if (front > rear) {
-			queue = "Queue is Empty";
-		} 
-		else {
-			for (int index = 0; index < size; index++) {
-				queue += elementData[index];
-			}
-			queue += "]";
-		}
-
-		return queue;
 	}
 
 	/**

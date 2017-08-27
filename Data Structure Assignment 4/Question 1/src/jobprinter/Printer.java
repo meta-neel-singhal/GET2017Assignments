@@ -1,10 +1,9 @@
 
 package jobprinter;
 
-import jobprinter.Task;
+import queue.Queue;
 import utility.Input;
 import utility.Utility;
-import queue.Queue;
 
 /**
  * The Printer class to print jobs according to their priority.
@@ -30,7 +29,7 @@ public class Printer {
 				job = new Task();
 				addTask(job);
 				break;
-				// For printing the jobs.
+			// For printing the jobs.
 			case 2:	
 				Utility.sort(jobQueue);
 				while (jobQueue.size() > 0) {
@@ -38,7 +37,7 @@ public class Printer {
 				}
 				System.out.println("All jobs are completed.");
 				break;
-				// Exit.
+			// Exit.
 			case 3:
 				Input.close();
 				System.exit(0);
@@ -60,23 +59,23 @@ public class Printer {
 		designation = designation.toLowerCase();
 
 		switch (designation) {
-		/*If designation is chairman*/
+		// If designation is chairman.
 		case "chairman":
 			result = 4;
 			break;
-			/*If designation is professor*/
+		// If designation is professor.
 		case "professor":
 			result = 3;
 			break;
-			/*If designation is graduate*/	
+		// If designation is graduate.	
 		case "graduate":
 			result = 2;
 			break;
-			/*If designation is undergraduate*/	
-		case "undergraduates":
+		// If designation is undergraduate.
+		case "undergraduate":
 			result = 1;
 			break;
-			/*If not from any of these than assign 0*/
+		// If designation is other than these.
 		default:
 			result = 0;
 		}
@@ -87,7 +86,7 @@ public class Printer {
 	/**
 	 * Method to assign a task to job queue.
 	 *
-	 * @param job    Object of task.
+	 * @param job    Object of task class.
 	 */
 	private static void addTask(Task job) {
 		String message = "";
