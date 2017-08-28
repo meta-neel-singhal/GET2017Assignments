@@ -1,10 +1,12 @@
-package queue;
+package queue.junittest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import queue.utility.Queue;
 
 /**
  * The class for JUnit Tests.

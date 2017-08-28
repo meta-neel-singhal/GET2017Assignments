@@ -1,4 +1,4 @@
-package queue;
+package queue.utility;
 
 import java.util.Arrays;
 

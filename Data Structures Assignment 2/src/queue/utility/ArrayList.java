@@ -1,4 +1,4 @@
-package queue;
+package queue.utility;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class ArrayList<T> {
 	/** 
 	 * Parameterized Constructor.
 	 * 
-	 * @param initialCapacity of the array list.
+	 * @param initialCapacity    initial capacity of the array list.
 	 */
 	public ArrayList(int initialCapacity) {
 		if (initialCapacity < 0) {
@@ -34,12 +34,10 @@ public class ArrayList<T> {
 	}
 
 	/**
-	 * Adds the.
+	 * Adds the element to the array list.
 	 *
-	 * @param element the element
-	 * @return true if element is added
-	 * 
-	 * this method adds an element e(value) to mergedList
+	 * @param element    the element to add.
+	 * @return true if element is added.
 	 */
 	public boolean add(T element) {
 		ensureCapacity(size + 1);
@@ -49,13 +47,12 @@ public class ArrayList<T> {
 	}
 
 	/**
-	 * Gets the element.
+	 * Gets the element at a specified location.
 	 *
-	 * @param location the location
+	 * @param location    the location to get.
 	 * @return element at a particular index
 	 */
 	public T getElement(int location) {
-
 		// check if index is in range else throw IndexOutOfBounds exception
 		if (location > size - 1 || location < 0) {
 			throw new IndexOutOfBoundsException("location: " + location + "," + "size: " + size);
@@ -65,10 +62,10 @@ public class ArrayList<T> {
 	}
 
 	/**
-	 * Overwrite element.
+	 * Overwrite element at a location with a new element.
 	 *
-	 * @param location the location
-	 * @param newValue the new value
+	 * @param location    the location of element to change.
+	 * @param newValue    the value of new element..
 	 * @return true, if successful
 	 */
 	public boolean overwriteElement(int location, T newValue) {
@@ -81,19 +78,19 @@ public class ArrayList<T> {
 	}
 
 	/**
-	 * Ensure capacity.
+	 * Checks if the capacity is less and grows the capacity of array.
 	 *
-	 * @param minCapacity this method checks if the capacity is less and grows the capacity of array
+	 * @param minCapacity    to check if the capacity needs to be increased. 
 	 */
 	public void ensureCapacity(int minCapacity) {
-		// if capacity is less then grow the capacity 
+		// If capacity is less then grow the capacity. 
 		if (minCapacity - array.length > 0) {
 			growCapacity();
 		}
 	}
 
 	/**
-	 * Gets the size.
+	 * Gets the size of the list.
 	 *
 	 * @return size of array
 	 */
@@ -103,23 +100,9 @@ public class ArrayList<T> {
 	}
 
 	/**
-	 * Grow capacity.
-	 *
-	 * @param minCapacity this method increases the capacity of array by making a new array with increased capacity
-	 * and transferring the old array into new one
+	 * Increases the capacity of array.
 	 */
 	public void growCapacity() {
 		array = Arrays.copyOf(array, array.length + MAX);
-	}
-
-	/**
-	 * Check for range.
-	 *
-	 * @param index This method checks the range of index
-	 */
-	public void checkForRange(int index) {
-		if (index > size && index < 0) {
-			throw new ArrayIndexOutOfBoundsException("index: " + index + "size: " + size);
-		}
 	}
 }
