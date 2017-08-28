@@ -40,7 +40,7 @@ public class SortedList {
 		int compare;
 		// If position is less than the size of List.
 		if (position < sortedList.size()) {
-			/**
+			/*
 			 * Determining the order by comparing the value stored at position 
 			 * to the data which has to be inserted.
 			 */
