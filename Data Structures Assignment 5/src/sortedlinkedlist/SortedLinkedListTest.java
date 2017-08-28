@@ -23,7 +23,7 @@ public class SortedLinkedListTest {
 				
 		String expected = SortedList.sortedList.toString();
 		String actual = "[3, 6, 8, 12, 16]";
-		assertEquals(actual,expected);
+		assertEquals(actual, expected);
 	} 
 
 	// Negative test case.
@@ -34,6 +34,7 @@ public class SortedLinkedListTest {
 		SortedList.add(1);
 		SortedList.add(2);
 		SortedList.add(30);
+		
 		String expected = SortedList.sortedList.toString();
 		String actual = "[1, 12, 2, 24, 30]";
 		assertFalse(expected == actual);
