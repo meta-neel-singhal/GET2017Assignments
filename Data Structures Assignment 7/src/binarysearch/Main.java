@@ -16,9 +16,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		int[] array;
-		int lowerBound,
-			upperBound, 
-			elementToSearch, 
+		int elementToSearch, 
 			locationOfElement, 
 			size;
 		Scanner scan = new Scanner(System.in);
@@ -40,16 +38,15 @@ public class Main {
 		do {
 			System.out.println("Enter the element you want to search : ");
 			elementToSearch = Input.takeIntegerAsInput();
-			lowerBound = 0;
-			upperBound = size - 1;
+
 			// Call the method to find an element in the array using binary search.
-			locationOfElement = searchObject.findElement(array, lowerBound, upperBound, elementToSearch);
+			locationOfElement = searchObject.findElement(array, 0, size - 1, elementToSearch);
 			// Check if the element was found or not.
 			if (locationOfElement == -1) {
 				System.out.println("Element not found !");
 			}
 			else {
-				System.out.println("Element is found at position : " + locationOfElement);
+				System.out.println("Element is found at position : " + (locationOfElement + 1));
 			}
 			System.out.println("Press Y to continue searching : ");
 		} while (scan.next().equalsIgnoreCase("y"));

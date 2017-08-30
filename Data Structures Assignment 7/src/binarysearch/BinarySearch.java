@@ -22,34 +22,31 @@ public class BinarySearch {
 	 * @return location      location of the element to be searched.
 	 */
 	public int findElement (int[] array, int lowerBound, int upperBound, int element) {
-		int begin = lowerBound,
-				end = upperBound,
-				middle = (begin + end) / 2,
-				location = middle;
+		int middle = (lowerBound + upperBound) / 2;
 
 		// Checks if the array search is complete and if the element is found or not.
-		if (begin <= end && array[middle] != element) {
+		if (lowerBound <= upperBound && array[middle] != element) {
 			// If element to be searched is smaller than the middle value.
 			if (element < array[middle]) {
-				end = middle - 1;
+				upperBound = middle - 1;
 			}
 			// If element to be searched is larger than the middle value.
 			else {
-				begin = middle + 1;
+				lowerBound = middle + 1;
 			}
-			location = findElement(array, begin, end, element);
+			middle = findElement(array, lowerBound, upperBound, element);
 		}
 		// Checks if element is not present in the array.
-		else if (array[location] != element) {
-			location = -1;
+		else if (array[middle] != element) {
+			middle = -1;
 		}
 		else {
 			//Sets location of the element if it is found.
-			if (location != 0 && array[location - 1] == element) {
-				location = findElement(array, 0, location - 1, element);
+			if (middle != 0 && array[middle - 1] == element) {
+				middle = findElement(array, 0, middle - 1, element);
 			}
 		}
 
-		return location;
+		return middle;
 	}
 }	
