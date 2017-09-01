@@ -8,8 +8,8 @@ import model.Product;
  * @author Neel Singhal
  */
 public interface BaseDao {
-	public Product getProduct(int productId);
-	public void addProduct(BaseEntity product);
-	public void updateProduct(BaseEntity product);
-	public void deleteProduct(BaseEntity product);
+	public Product get(String entityCode);
+	public void add(BaseEntity entity);
+	public void update(BaseEntity entity);
+	public void delete(BaseEntity entity);
 }

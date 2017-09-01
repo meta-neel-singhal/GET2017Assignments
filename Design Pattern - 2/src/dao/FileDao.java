@@ -12,25 +12,25 @@ import model.Product;
 public class FileDao implements BaseDao, ProductDao {
 
 	@Override
-	public Product getProduct(int productId) {
+	public Product get(String productCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void addProduct(BaseEntity product) {
+	public void add(BaseEntity product) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateProduct(BaseEntity product) {
+	public void update(BaseEntity product) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteProduct(BaseEntity product) {
+	public void delete(BaseEntity product) {
 		// TODO Auto-generated method stub
 		
 	}

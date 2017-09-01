@@ -20,7 +20,8 @@ public class DisplayInput {
 	 */
 	public static void getInput() {
 		Scanner scan = new Scanner(System.in);
-		int noOfProducts, productId, productQuantity;
+		int noOfProducts, productQuantity;
+		String productCode;
 		System.out.println("Enter the no. of products you want to buy: ");
 		noOfProducts = scan.nextInt();
 		ProductController controller = new ProductController();
@@ -28,7 +29,7 @@ public class DisplayInput {
 		// Get input about product details for every product.
 		for(int count = 0; count < noOfProducts; count++){
 			System.out.println("Enter the product id: ");
-			productId = scan.nextInt();
+			productCode = scan.next();
 			System.out.println("Enter quantity of this product: ");
 			productQuantity = scan.nextInt();
 			// Validate that quantity of product should not be less than 1.
@@ -36,7 +37,7 @@ public class DisplayInput {
 				System.out.println("Enter valid quantity for the product :");
 				productQuantity = scan.nextInt();
 			}
-			input.setProductId(productId);
+			input.setProductCode(productCode);
 			input.setProductQuantity(productQuantity);
 			controller.getView(input);
 		}

@@ -19,15 +19,22 @@ public class ProductFactory {
 	 * @return the object of the required class.
 	 */
 	public static BaseDao getInstance(String instance){
+		BaseDao instBaseDao;
 		switch(instance){
 		case "InMemoryProductDao":
-			return new InMemoryProductDao();
+			instBaseDao = new InMemoryProductDao();
+			break;
 		case "MySQLDao":
-			return new MySQLDao();
+			instBaseDao = new MySQLDao();
+			break;
 		case "FileDao":
-			return new FileDao();
+			instBaseDao = new FileDao();
+			break;
 		default:
-			return null;
+			instBaseDao = null;
+			break;
 		}
+		
+		return instBaseDao;
 	}
 }

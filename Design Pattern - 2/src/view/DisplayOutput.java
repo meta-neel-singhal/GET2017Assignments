@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import controller.ProductController;
 import model.Cart;
 import utility.StatusEnumerations;
 import dao.InMemoryProductDao;
@@ -15,7 +16,8 @@ import dao.InMemoryProductDao;
  */
 public class DisplayOutput {
 
-	static List<Cart> cartItems = InMemoryProductDao.getCartItems();
+	static ProductController prodController = new ProductController();
+	static List<Cart> cartItems;
 	static Scanner scan;
 	static double totalPrice = 0.0;
 	
@@ -29,7 +31,7 @@ public class DisplayOutput {
 			System.out.println("\n1. View Cart");
 			System.out.println("2. Edit Cart");
 			System.out.println("3. Generate Bill");
-			try{
+			try {
 				num = scan.nextInt();
 				switch (num) {
 				case 1:
@@ -42,7 +44,8 @@ public class DisplayOutput {
 					generateBill();
 					break;
 				}
-			}catch(InputMismatchException e){
+			}
+			catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
 			}
 		} while (true);		
@@ -53,18 +56,17 @@ public class DisplayOutput {
 	 * Displays the cart of the user.
 	 */
 	public static void viewCart() {
-		cartItems = InMemoryProductDao.getCartItems();
+		cartItems = prodController.getCartItems();
 		System.out.println("\n########################");
 		System.out.println("YOUR ORDER");
 		System.out.println("########################");
 		System.out.println("\nPURCHASED PRODUCTS : ");
 		for (Cart item : cartItems) {
-			System.out.println("Product : "
-					+ InMemoryProductDao.productMap.get(item.getProductId()).getProductId()
-					+ " - " + InMemoryProductDao.productMap.get(item.getProductId()).getProductName());
+			System.out.println("Product : "	+ prodController.getProductCode(item) 
+					+ " - " + prodController.getProductName(item));
 			System.out.println("Cost : Rs."	+ item.getTotalPrice() + "( "
-					+ InMemoryProductDao.productMap.get(item.getProductId()).getProductPrice()
-					+ " * " + item.getProductQuantity() + " )\n");
+					+ prodController.getProductPrice(item) + " * "
+					+ item.getProductQuantity() + " )\n");
 		}
 	}
 
@@ -73,7 +75,7 @@ public class DisplayOutput {
 	 */
 	public static void editCart() {
 		boolean flag = true;
-		int productId;
+		String productCode;
 		do {
 			System.out.println("\n1. Remove items from cart");
 			System.out.println("2. Add items to cart");
@@ -82,8 +84,8 @@ public class DisplayOutput {
 			switch (val) {
 			case 1:
 				System.out.println("Enter product code you want to remove");
-				productId = scan.nextInt();
-				InMemoryProductDao.removeFromCart(productId);
+				productCode = scan.next();
+				prodController.removeFromCart(productCode);
 				break;
 			case 2:
 				DisplayInput.getInput();
@@ -99,7 +101,7 @@ public class DisplayOutput {
 	 * Generates the bill of the user and exit from the application.
 	 */
 	public static void generateBill() {
-		cartItems = InMemoryProductDao.getCartItems();
+		cartItems = prodController.getCartItems();
 		totalPrice = 0;
 		for (Cart item : cartItems) {
 			totalPrice += item.getTotalPrice();

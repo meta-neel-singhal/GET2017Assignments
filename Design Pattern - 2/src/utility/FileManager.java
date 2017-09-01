@@ -27,13 +27,14 @@ public class FileManager {
 			while ((str = br.readLine()) != null) {
 				String s[] = str.split(",");
 				prod = new Product();
-				prod.setProductId(Integer.parseInt(s[0]));
+				prod.setProductCode(s[0]);
 				prod.setProductName(s[1]);
 				prod.setProductPrice(Double.parseDouble(s[2]));
-				InMemoryProductDao.productMap.put(Integer.parseInt(s[0]), prod);
+				InMemoryProductDao.productMap.put(s[0], prod);
 			}
 			br.close();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -54,7 +55,8 @@ public class FileManager {
 			}
 			System.out.println(str);
 			br.close();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}

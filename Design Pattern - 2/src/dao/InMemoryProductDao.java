@@ -16,27 +16,27 @@ import view.DisplayOutput;
  * @author Neel Singhal
  */
 public class InMemoryProductDao implements BaseDao, ProductDao {
-	public static HashMap<Integer, Product> productMap = new HashMap<Integer, Product>();
+	public static HashMap<String, Product> productMap = new HashMap<String, Product>();
 	static List<Cart> cartItems = new ArrayList<Cart>();
 
 	@Override
-	public Product getProduct(int productId) {
+	public Product get(String productCode) {
 		// TODO Auto-generated method stub
-		return InMemoryProductDao.productMap.get(productId);
+		return productMap.get(productCode);
 	}
 
 	@Override
-	public void addProduct(BaseEntity product) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void updateProduct(BaseEntity product) {
+	public void add(BaseEntity product) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void deleteProduct(BaseEntity product) {
+	public void update(BaseEntity product) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void delete(BaseEntity product) {
 		// TODO Auto-generated method stub	
 	}
 
@@ -57,14 +57,14 @@ public class InMemoryProductDao implements BaseDao, ProductDao {
 	/**
 	 * Removes the product from the cart.
 	 * 
-	 * @param productId    ID of the product to be removed.
+	 * @param productCode    ID of the product to be removed.
 	 */
-	public static void removeFromCart(int productId) {
+	public static void removeFromCart(String productCode) {
 		boolean flag = true;
 		// Iterates over the list of products in cart.
 		for (Cart item : cartItems) {
 			// Deletes the product from cart if available.
-			if (item.getProductId() == productId) {
+			if (item.getProductCode().equals(productCode)) {
 				cartItems.remove(item);
 				flag = false;
 				System.out.println("Product is successfully removed from the cart.");

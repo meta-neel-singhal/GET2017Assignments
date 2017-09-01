@@ -21,7 +21,7 @@ public class UnitTests {
 		Product product = new Product();
 		ProductFacade productFacade = new ProductFacade();
 		FileManager.readProducts(Constants.PRODUCT_LOCATION);
-		product.setProductId(123);
+		product.setProductCode("Q23");
 		Assert.assertTrue(productFacade.isValid(product));
 	}
 
@@ -37,8 +37,7 @@ public class UnitTests {
 	public void getPriceTestCase1() {
 		Product product = new Product();
 		ProductFacade facade = new ProductFacade();
-		FileManager.readProducts(Constants.PRODUCT_LOCATION);
-		product.setProductId(123);
+		product.setProductCode("Q23");
 		product.setProductQuantity(3);
 		double expectedPrice = facade.getPrice(product);
 		Assert.assertFalse(expectedPrice == 0.0);
@@ -49,8 +48,7 @@ public class UnitTests {
 	public void getPriceTestCase2() {
 		Product product = new Product();
 		ProductFacade facade = new ProductFacade();
-		FileManager.readProducts(Constants.PRODUCT_LOCATION);
-		product.setProductId(123);
+		product.setProductCode("Q23");
 		product.setProductQuantity(3);
 		double expectedPrice = facade.getPrice(product);
 		Assert.assertTrue(expectedPrice == 4500.0);
@@ -69,7 +67,7 @@ public class UnitTests {
 		Product product = new Product();
 		ProductFacade productFacade = new ProductFacade();
 		FileManager.readProducts(Constants.PRODUCT_LOCATION);
-		product.setProductId(123);
+		product.setProductCode("Q23");
 		Assert.assertFalse(!productFacade.isValid(product));
 	}
 }

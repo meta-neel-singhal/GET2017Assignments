@@ -1,5 +1,7 @@
 package facade;
 
+import java.util.List;
+
 import model.Cart;
 import model.Product;
 import dao.BaseDao;
@@ -12,7 +14,7 @@ import dao.InMemoryProductDao;
  */
 public class ProductFacade {
 	BaseDao daoObject = ProductFactory.getInstance("InMemoryProductDao");
-	
+		
 	/**
 	 * Check if the input product is in the store or not.
 	 * 
@@ -21,7 +23,7 @@ public class ProductFacade {
 	 */
 	public boolean isValid(Product input) {
 		boolean result = false;
-		if(InMemoryProductDao.productMap.containsKey(input.getProductId())) {
+		if(InMemoryProductDao.productMap.containsKey(input.getProductCode())) {
 			result = true;
 		}
 		return result;
@@ -35,7 +37,7 @@ public class ProductFacade {
 	 */
 	public double getPrice(Product input) {
 		double totalPrice;
-		Product prod = (Product) daoObject.getProduct(input.getProductId());
+		Product prod = (Product) daoObject.get(input.getProductCode());
 		double price = prod.getProductPrice(); 
 		totalPrice = input.getProductQuantity() * price;
 		return totalPrice;
@@ -48,12 +50,60 @@ public class ProductFacade {
 	 */
 	public void addToCart(Product input){
 		Cart cart = new Cart();
-		cart.setProductId(input.getProductId());
+		cart.setProductCode(input.getProductCode());
 		cart.setProductQuantity(input.getProductQuantity());
 		cart.setTotalPrice(getPrice(input));
 
 		((InMemoryProductDao)daoObject).addToCartItems(cart);
 		System.out.println("Product added successfully to the cart.");
 	}
-
+	
+	/**
+	 * Get the product of the cart.
+	 * 
+	 * @return the list of cart items.
+	 */
+	public List<Cart> getCartItems() {
+		List<Cart> cartItems = InMemoryProductDao.getCartItems();
+		return cartItems;
+	}
+	
+	/**
+	 * Removes the product from the cart.
+	 * 
+	 * @param productCode    the code of product to be removed.
+	 */
+	public void removeFromCart(String productCode) {
+		InMemoryProductDao.removeFromCart(productCode);
+	}
+	
+	/**
+	 * Get the product code of the cart item.
+	 * 
+	 * @param item    Cart item.
+	 * @return the code of the required item.
+	 */
+	public String getProductCode(Cart item) {
+		return InMemoryProductDao.productMap.get(item.getProductCode()).getProductCode();
+	}
+	
+	/**
+	 * Get the product name of the cart item. 
+	 * 
+	 * @param item    Cart item.
+	 * @return the name of the required item.
+	 */
+	public String getProductName(Cart item) {
+		return InMemoryProductDao.productMap.get(item.getProductCode()).getProductName();
+	}
+	
+	/**
+	 * Get the product price of the cart item. 
+	 * 
+	 * @param item    Cart item.
+	 * @return the price of the required item.
+	 */
+	public Double getProductPrice(Cart item) {
+		return InMemoryProductDao.productMap.get(item.getProductCode()).getProductPrice();
+	}
 }
