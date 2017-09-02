@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript - Assignment 3 - Web Worker</title>
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<!-- Header starts -->
+		<header>Web Worker Assignment</header>
+		<!-- Header ends -->
+
+		<!-- Section starts -->
+		<section>
+			<!-- Div for tabs -->
+			<div class="tab">
+				<button class="tablinks" onclick="openWebWorker(event, 'withoutWebWorker')">Without Web Worker</button>
+				<button class="tablinks" onclick="openWebWorker(event, 'withWebWorker')">With Web Worker</button>
+			</div>
+
+			<!-- Div for contents of "With Web Worker" tab -->
+			<div id="withWebWorker" class="cover tabcontent">
+				<input type="button" id="start" value="Start Web Worker" />
+				<input type="button" id="stop" value="Stop Web Worker" />
+				<input type="button" id="reset" value="Reset Web Worker" />
+				<input type="button" id="printDate" value="Show Date" />
+				<div id="result">Your Result Will Appear Here...</div>
+			</div>
+
+			<!-- Div for contents of "Without Web Worker" tab -->
+			<div id="withoutWebWorker" class="cover tabcontent">
+				<input type="button" id="hold" value="Hold for 2 minutes" />
+				<input type="button" id="showDate" value="Show Date" />
+				<div id="show">Message Box</div>
+			</div>
+		</section>
+		<!-- Section ends -->
+
+		<!-- Footer Starts -->
+		<footer>Created by Neel Kumar Singhal</footer>
+		<!-- Footer ends -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
