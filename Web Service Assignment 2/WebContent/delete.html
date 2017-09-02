@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Service - Assignment 2</title>
+		<link rel="icon" href="favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	</head>
+	<body>
+		<!-- Header starts -->
+		<header>Web Service Assignment</header>
+		<!-- Header ends -->
+
+		<!-- Section starts -->
+		<section id="container">
+			<div><h1>Delete An Employee By Its ID</h1></div>
+			<div class="content">
+				<div class="label">Enter ID of the Employee you want to delete:</div>
+				<input type="text" id="empId" placeholder="Employee ID" pattern="[0-9]{3}" title="Enter 3 digit employee ID" required />
+				<div><button class="button" onclick="deleteEmployee"><span>Delete Employee </span></button></div>
+			</div>	
+			<div class="result">Message Box !</div>
+			
+			<!--<div class="label message">Message Box !</div>-->
+
+		</section>
+		<!-- Section ends -->
+
+		<!-- Footer Starts -->
+		<footer>Created by Neel Kumar Singhal</footer>
+		<!-- Footer ends -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>

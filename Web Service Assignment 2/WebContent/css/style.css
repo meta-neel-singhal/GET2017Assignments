@@ -1,0 +1,178 @@
+body{
+    font-family: 'Cinzel', serif;
+    background: radial-gradient(circle, #ffffff, #c3c3c3);
+}
+
+header{
+    font-size: 20px;
+    top: 0px;
+}
+
+header, footer{
+    background : #000000;
+    color : #ffffff;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+    position: absolute;
+    padding: 10px 0px;
+}
+
+footer{
+    font-size: 15px;
+    bottom: 0px;
+    color: #FFFFFF;
+   position: fixed;
+}
+
+.button {
+    font-family: 'Cinzel', serif;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #83c3dd;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 23px;
+    padding: 10px;
+    width: 800px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#container {
+    position: relative;
+    margin: 100px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+/*********************************************** css for retrieve **************************************************************/
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 2px solid #999;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f1f1f1;
+    width: 85%;
+    margin: auto;
+}
+
+/* Style the content under the tabs */
+.tabcontent {
+    display: none;
+    padding: 15px 0px;
+    border: 2px solid #999;
+    border-radius: 5px 5px 5px 5px;
+    border-top: none;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Style the buttons in the tab */
+div.tab button {
+    font-family: 'Cinzel', serif;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 20px;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+.label {
+    margin: auto;
+    padding: 20px 0px;
+}
+
+input[type="text"] {
+    margin: 10px 20px 30px 20px;
+    width: 200px;
+    padding: 7px;
+    border-radius: 5px;
+    border-style: outset;
+    outline: none;
+}
+
+.content button {
+    padding: 10px;
+    font-size: 15px;
+    width: 190px;
+    margin-bottom: 20px;
+}
+
+.content, .message {
+    border-radius: 4px;
+    border: 2px solid #999;
+    width: 50%;
+    margin: auto;
+}
+
+.result {
+    margin: 35px 20px 20px 20px;
+    font-size: 18px;
+    padding: 10px; /*20px 20px 20px 20px;*/
+}
+
+.message {
+    border-top: none;
+}
+
+#leftForm {
+    float: left;
+    margin: 0px 50px;
+    line-height: 75px;
+}
+
+#rightForm {
+    margin: 6px;
+}
+
+
+li {
+    list-style: none;
+}
