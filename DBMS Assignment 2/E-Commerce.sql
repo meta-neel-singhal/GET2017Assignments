@@ -8,7 +8,8 @@ USE `e_commerce`;
 CREATE TABLE `category`(
     `category_id` INT AUTO_INCREMENT PRIMARY KEY,
     `category_name` VARCHAR(30) NOT NULL,
-    `parent_id` INT DEFAULT NULL
+    `parent_id` INT DEFAULT NULL,
+    CONSTRAINT asd FOREIGN KEY (parent_id) REFERENCES category(category_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- Inserts data into the category table.
@@ -42,7 +43,7 @@ INSERT INTO `category`(`category_name`, `parent_id`) VALUES ("Mobiles and Tablet
                                                      ("Top Load", 27),
                                                      ("Front Load", 27),
                                                      ("Semi Automatic", 26);
-  
+                                                      
 -- Display all the categories along with its Parent category sorted on parent name.
 SELECT IFNULL(parent.`category_name`, "Top Category") AS 'Parent Category', child.`category_name` AS 'Category'
 FROM `category` AS parent
