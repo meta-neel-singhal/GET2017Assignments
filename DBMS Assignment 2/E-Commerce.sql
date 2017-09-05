@@ -6,13 +6,13 @@ USE `e_commerce`;
 
 -- Create category table.
 CREATE TABLE `category`(
-    category_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(30) NOT NULL,
-    parent_id INT DEFAULT NULL
+    `category_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `category_name` VARCHAR(30) NOT NULL,
+    `parent_id` INT DEFAULT NULL
 );
 
 -- Inserts data into the category table.
-INSERT INTO `category`(category_name, parent_id) VALUES ("Mobiles and Tablets", NULL),
+INSERT INTO `category`(`category_name`, `parent_id`) VALUES ("Mobiles and Tablets", NULL),
                                                      ("Mobiles", 1),
                                                      ("Smart Phones", 2),
                                                      ("Featured Phones", 2),
@@ -44,13 +44,13 @@ INSERT INTO `category`(category_name, parent_id) VALUES ("Mobiles and Tablets", 
                                                      ("Semi Automatic", 26);
   
 -- Display all the categories along with its Parent category sorted on parent name.
-SELECT IFNULL(parent.category_name, "Top Category") AS 'Parent Category', child.category_name AS 'Category'
+SELECT IFNULL(parent.`category_name`, "Top Category") AS 'Parent Category', child.`category_name` AS 'Category'
 FROM `category` AS parent
 RIGHT JOIN `category` AS child
-ON child.parent_id = parent.category_id
-ORDER BY parent.category_name ASC;
+ON child.`parent_id` = parent.`category_id`
+ORDER BY parent.`category_name` ASC;
 
 -- Display all the top categories.
-SELECT category_name
+SELECT `category_name`
 FROM `category`
-WHERE parent_id IS NULL;
+WHERE `parent_id` IS NULL;
