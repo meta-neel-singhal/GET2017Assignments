@@ -33,27 +33,35 @@ USE `form`;
 
 -- Creating states table.
 CREATE TABLE `states` (
-    `name` VARCHAR(30) PRIMARY KEY
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(30) NOT NULL
 );
 
 -- Creating cities table.
 CREATE TABLE `cities` (
-   `name` VARCHAR(30) PRIMARY KEY
+   `id` INT AUTO_INCREMENT PRIMARY KEY,
+   `name` VARCHAR(30) NOT NULL,
+   `state_id` INT,
+   CONSTRAINT `fk_city_state`
+       FOREIGN KEY (`state_id`)
+       REFERENCES `states` (`id`)
+       ON DELETE CASCADE
+       ON UPDATE CASCADE
 );
    
 -- Creating zipcode table.
 CREATE TABLE `zip_code` (
-   `code` INT NOT NULL PRIMARY KEY,
-   `state_name` VARCHAR(30),
-   `city_name` VARCHAR(30),
-   CONSTRAINT `fk_state_name` 
-       FOREIGN KEY (`state_name`) 
-       REFERENCES `states` (`name`) 
+   `code` INT PRIMARY KEY,
+   `state_id` INT,
+   `city_id` INT,
+   CONSTRAINT `fk_state_zipcode` 
+       FOREIGN KEY (`state_id`) 
+       REFERENCES `states` (`id`) 
        ON DELETE CASCADE 
        ON UPDATE CASCADE,
-   CONSTRAINT `fk_city_name`
-       FOREIGN KEY (`city_name`)
-       REFERENCES `cities` (`name`)
+   CONSTRAINT `fk_city_zipcode`
+       FOREIGN KEY (`city_id`)
+       REFERENCES `cities` (`id`)
        ON DELETE CASCADE
        ON UPDATE CASCADE
 );
@@ -65,28 +73,32 @@ INSERT INTO `states`(`name`) VALUES ('Rajasthan'),
                                     ('Bihar');
                                 
 -- Inserting the data in cities table.
-INSERT INTO `cities`(`name`) VALUES ('Banswara'),
-                                    ('Dungarpur'),
-                                    ('Jaipur'),
-                                    ('Godavari'),
-                                    ('Nellore'),
-                                    ('Nagaon'),
-                                    ('Diphu'),
-                                    ('Patna'),
-                                    ('Gaya');
+INSERT INTO `cities`(`name`, `state_id`) VALUES ('Banswara', 1),
+                                                ('Dungarpur', 1),
+                                                ('Jaipur', 1),
+                                                ('Godavari', 2),
+                                                ('Nellore', 2),
+                                                ('Nagaon', 3),
+                                                ('Diphu', 3),
+                                                ('Patna', 4),
+                                                ('Gaya', 4);
                                     
 -- Inserting the data in zip_code table.
-INSERT INTO `zip_code`(`code`, `city_name`, `state_name`) VALUES (327001, 'Banswara', 'Rajasthan'),
-                                                                 (314001,'Dungarpur','Rajasthan'),
-                                                                 (302016,'Jaipur','Rajasthan'),
-                                                                 (533260,'Dungarpur','Andhra Pradesh'),
-                                                                 (524414,'Nellore','Andhra Pradesh'),
-                                                                 (782001,'Nagaon','Assam'),
-                                                                 (782447,'Diphu','Assam'),
-                                                                 (804453,'Patna','Bihar'),
-                                                                 (804428,'Gaya','Bihar  ');
+INSERT INTO `zip_code`(`code`, `city_id`, `state_id`) VALUES (327001, 1, 1),
+                                                             (314001, 2, 1),
+                                                             (302016, 3, 1),
+                                                             (533260, 4, 2),
+                                                             (524414, 5, 2),
+                                                             (782001, 6, 3),
+                                                             (782447, 7, 3),
+                                                             (804453, 8, 4),
+                                                             (804428, 9, 4);
 
 -- Display the Zip Code, City Names and States ordered by State Name and City Name.
-SELECT `code`, `city_name`, `state_name`
-FROM `zip_code`
-ORDER BY `state_name`, `city_name`;
+SELECT z.`code` AS 'ZIP CODE', c.`name` AS 'CITY NAME', s.`name` AS 'STATE'
+FROM `zip_code` z
+JOIN `cities` c
+ON c.`id` = z.`city_id`
+JOIN `states` s
+ON s.`id` = z.`state_id`
+ORDER BY z.`state_id`, z.`city_id`;
