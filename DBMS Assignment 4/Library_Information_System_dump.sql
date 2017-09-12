@@ -1,3 +1,6 @@
+-- Deletes database if already exists.
+DROP DATABASE IF EXISTS `library_information_system`;
+
 -- Create database.
 CREATE DATABASE `library_information_system`;
 
