@@ -84,8 +84,11 @@ CREATE TABLE `book_issue`(
     `accession_no` VARCHAR(10),
     `member_id` INT,
     `due_date` DATE NOT NULL DEFAULT 0,
-    PRIMARY KEY (`issue_date`,`accession_no`,`member_id`),
-    CONSTRAINT `fk_book_issue_book` FOREIGN KEY (`accession_no`)
+    UNIQUE KEY (`issue_date`, `accession_no`),
+    PRIMARY KEY (`issue_date`, `accession_no`, `member_id`),
+   /* CHECK (IF ((SELECT status FROM books WHERE books.accession_no = NEW.accession_no AND books.issue_date = NEW.issue_date)) IN ('UNAVAILABLE') THEN TRUE
+    ELSE FALSE end if),
+  */CONSTRAINT `fk_book_issue_book` FOREIGN KEY (`accession_no`)
         REFERENCES `books` (`accession_no`)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
@@ -95,13 +98,66 @@ CREATE TABLE `book_issue`(
         ON DELETE CASCADE
 );
 
+DELIMITER //
+CREATE TRIGGER check_book_issue
+    BEFORE INSERT ON `book_issue`
+    FOR EACH ROW
+    BEGIN
+    SET NEW.`due_date` = CURDATE() + INTERVAL 15 day;
+    IF((SELECT status 
+        FROM books  
+        WHERE books.accession_no = NEW.accession_no) IN ('UNAVAILABLE'))
+    THEN
+       SET NEW.accession_no = null;
+    ELSE  
+       UPDATE books
+       SET status = 'UNAVAILABLE'
+       WHERE books.accession_no = NEW.accession_no;
+    end IF;
+    END //
+    DELIMITER ;
+  
+  /*
+DELIMITER ;;
+CREATE TRIGGER check_book_issue
+    BEFORE INSERT ON `book_issue`
+    FOR EACH ROW
+    BEGIN
+    SET NEW.`due_date` = CURDATE() + INTERVAL 15 day;
+        IF((SELECT status FROM books WHERE books.accession_no = NEW.accession_no) IN ('UNAVAILABLE'))
+        then SET NEW.issue_date = NULL;
+        ELSE  
+        UPDATE books
+        SET status = 'UNAVAILABLE'
+        WHERE books.accession_no = NEW.accession_no;
+        end IF;
+    END ;;
+    DELIMITER ;
+    */
+
+/*
+DELIMITER ;;
+CREATE TRIGGER check_book_return
+    BEFORE INSERT ON `book_issue`
+    FOR EACH ROW
+    BEGIN
+        SELECT IFNULL((SELECT return_date 
+               FROM book_return br
+               JOIN book_issue bi
+               ON bi.accession_no = br.accession_no AND bi.issue_date = br.issue_date
+               ORDER BY return_date DESC
+               LIMIT 1) , UPDATE books SET status = 'UNAVAILABLE' WHERE books.accession_no = NEW.accession_no);
+    END ;
+    DELIMITER ;
+*/
+
 -- Create table book_return.
 CREATE TABLE `book_return`(
     `return_date` TIMESTAMP,
     `accession_no` VARCHAR(10),
     `member_id` INT,
     `issue_date` TIMESTAMP NOT NULL,
-    PRIMARY KEY (`return_date`,`accession_no`,`member_id`),
+    PRIMARY KEY (`return_date`, `accession_no`, `member_id`),
     CONSTRAINT `fk_book_return_members` FOREIGN KEY (`member_id`)
         REFERENCES `members` (`id`)
         ON UPDATE CASCADE
@@ -111,6 +167,17 @@ CREATE TABLE `book_return`(
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+DELIMITER ;;
+CREATE TRIGGER check_book_return
+    AFTER INSERT ON `book_return`
+    FOR EACH ROW
+    BEGIN
+        UPDATE books
+        SET status = 'AVAILABLE'
+        WHERE books.accession_no = NEW.accession_no;
+    END ;;
+    DELIMITER ;
     
 -- Show all tables in the database.
 SHOW tables;
@@ -121,11 +188,11 @@ MODIFY COLUMN `issue_date` TIMESTAMP
 DEFAULT NOW();
 
 -- To set default value of column due_date to current date + 15.
-CREATE TRIGGER `due_date_Trigger` 
+/*CREATE TRIGGER `due_date_Trigger` 
     BEFORE INSERT ON `book_issue`  
     FOR EACH ROW 
     SET NEW.`due_date` = CURDATE() + INTERVAL 15 day;
-
+*/
 -- Delete the foreign key fk_book_issue_member.
 ALTER TABLE `book_issue`
 DROP FOREIGN KEY `fk_book_issue_member`;
@@ -303,15 +370,15 @@ INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book1", 1);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book4", 3);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book2", 4);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book3", 5);
-INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book4", 1);
+/*INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book4", 1);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book2", 2);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book3", 6);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book4", 2);
 INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book2", 1);
-INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book3", 4);
-INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-06-6', "Book4", 4);
-INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-07-3', "Book2", 3);
-INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-06-1', "Book3", 2);
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book3", 4);*/
+INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-06-6', "Book7", 4);
+INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-07-3', "Book10", 3);
+INSERT INTO `book_issue`(`issue_date`, `accession_no`, `member_id`) VALUES('2017-06-1', "Book11", 2);
 
 -- Insert values into table title_author.
 INSERT INTO `title_author`(`title_id`, `author_id`) VALUES(1, 1);
@@ -322,12 +389,26 @@ INSERT INTO `title_author`(`title_id`, `author_id`) VALUES(5, 3);
 INSERT INTO `title_author`(`title_id`, `author_id`) VALUES(6, 2);
 
 -- Insert values into table book_return .
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-16', "Book6", 2, '2017-09-01');
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-07', "Book1", 1, '2017-08-24');
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-10-04', "Book4", 3, '2017-09-21');
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-25', "Book2", 4, '2017-09-10');
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-07', "Book2", 1, '2017-05-24');
-INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-25', "Book4", 4, '2017-05-10');
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES(CURDATE(), "Book6", 2, '2017-09-01');
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES(CURDATE(), "Book1", 1, '2017-08-24');
+/*INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-10-04', "Book4", 3, '2017-09-21');
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-09-25', "Book2", 4, '2017-09-10');*/
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES(CURDATE(), "Book2", 4, '2017-05-24');
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES(CURDATE(), "Book4", 3, '2017-05-10');
+INSERT INTO `book_return`(`return_date`, `accession_no`, `member_id`, `issue_date`) VALUES('2017-10-2', "Book10", 3, '2017-07-3');
+
+/*
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book1", 1);
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book6", 2);
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book2", 6);
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book4", 2);
+*/
+
+/*
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book2", 1);
+INSERT INTO `book_issue`(`accession_no`, `member_id`) VALUES("Book3", 4);
+*/
+
 
 -- Delete rows with Publisher1 from table title.
 DELETE FROM `title` WHERE `publisher_id` = 'Publisher1';
