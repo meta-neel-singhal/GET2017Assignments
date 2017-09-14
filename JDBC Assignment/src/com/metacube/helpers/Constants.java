@@ -1,5 +1,10 @@
 package com.metacube.helpers;
 
+/**
+ * Constants class containing all the constants.
+ * 
+ * @author Neel Singhal
+ */
 public class Constants {
 	private Constants() {
 		// Restrict instantiation.
