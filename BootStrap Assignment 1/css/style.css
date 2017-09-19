@@ -3,13 +3,6 @@ header {
     color: #ffffff;
 }
 
-.navbar-toggle .icon-bar {
-    background-color: #fff;
-}
-.navbar-toggle {
-    border: 1px solid #662d2d; 
-}
-
 header .container .icon {
 	margin: 10px;
 	font-size: 25px;
@@ -18,17 +11,24 @@ header .container .icon {
 	padding: 15px;
 }
 
-header .container .logo {
-	padding-top: 15px;
-}
-
 header .navbar-header button {
 	position: relative;
 	background-color: #ee657a;
 }
 
+header .container .brand {
+	margin-top: 10px;
+}
+
 header p {
 	margin-top: 20px;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-toggle {
+    border: 1px solid #662d2d; 
 }
 
 .navbar-inverse {
@@ -53,12 +53,6 @@ section .container {
 .layer1 .container hr {
 	border-top: 2px solid #f491a0; 
 	margin-top: 5px;
-}
-
-.layer1 .container .well {
-	margin: 35px 0px 0px 0px;
-	background-color: #dff0d8;
-	color: #8aab7f;
 }
 
 .layer2 .container .row {
@@ -100,7 +94,7 @@ section .container {
 	list-style: none;
 }
 
-.left-panel .panel-body .glyphicon {
+#left-panel .panel-body .glyphicon {
 	border: 1px solid #ccc;
 	padding: 5px;
 }
@@ -114,7 +108,7 @@ section .container {
 	padding: 5px;
 }
 
-.left-panel .panel-body {
+#left-panel .panel-body {
 	margin-bottom: 0px;
 }
 
@@ -125,23 +119,23 @@ section .container {
 	padding: 15px 20px;
 }
 
-.layer3 .container .row .right-panel .panel-heading {
+.layer3 .container .row #right-panel .panel-heading {
 	background-color: #dff0d8;
 	color: #74a084;
 	font-size: 15px;
 	padding: 17px;
 }
 
-.layer3 .container .row .right-panel .panel-body {
+.layer3 .container .row #right-panel .panel-body {
 	color: #000;
 }
 
-.layer3 .container .row .right-panel .panel-footer {
+.layer3 .container .row #right-panel .panel-footer {
 	color: #777;
 	padding: 18px;
 }
 
-.layer3 .container .row .right-panel button {
+.layer3 .container .row #right-panel button {
 	border-radius: 0px;
 }
 
