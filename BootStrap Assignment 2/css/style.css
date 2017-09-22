@@ -231,6 +231,10 @@ section .container {
 	list-style: none;
 }
 
+.panel-group .panel + .panel {
+    margin-top: 0px;
+}
+
 #left-panel .panel-body .glyphicon, .modal-body li a .glyphicon {
 	border: 1px solid #ccc;
 	padding: 5px;
