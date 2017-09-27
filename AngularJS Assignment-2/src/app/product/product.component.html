@@ -1,0 +1,22 @@
+<button class="btn btn-success create" [routerLink]="['/create-product']">Add a Product</button>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 card-outline" *ngFor="let product of products">
+            <div class="card mb-4 text-center">
+                <div class="card-block">
+                    <div class="col-sm-9 prod-info">
+                        <h4 class="card-title">{{product.name}}</h4>
+                        <p class="card-text">Product ID: {{product.id}}</p>
+                        <span>Rs. {{product.price}}</span>
+                    </div>
+                    <div class="col-sm-3 options">
+                        <button class="btn btn-primary" [routerLink]="['/detail', product.id]"><span class="glyphicon glyphicon-info-sign"></span></button>
+                        <button class="btn btn-info" [routerLink]="['/update', product.id]"><span class="glyphicon glyphicon-edit"></span></button>
+                        <button class="btn btn-success" (click)="addToCart(product)"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+                        <app-product-delete (click)="delete(product); $event.stopPropagation()"></app-product-delete>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
