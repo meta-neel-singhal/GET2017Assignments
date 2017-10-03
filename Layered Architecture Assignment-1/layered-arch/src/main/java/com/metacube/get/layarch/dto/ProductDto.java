@@ -1,5 +1,10 @@
 package com.metacube.get.layarch.dto;
 
+/**
+ * The class ProductDto.
+ * 
+ * @author Neel Singhal
+ */
 public class ProductDto {
 	private int id;
 	private String name;

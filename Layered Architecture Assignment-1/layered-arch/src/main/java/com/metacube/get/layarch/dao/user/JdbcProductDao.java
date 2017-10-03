@@ -6,34 +6,47 @@ import java.sql.SQLException;
 import com.metacube.get.layarch.dao.GenericJdbcDao;
 import com.metacube.get.layarch.model.Product;
 
-public class JdbcProductDao extends GenericJdbcDao<Product, Integer> implements ProductDao {
-
-	@Override protected String getTableName()
-	{
+/**
+ * The Class JdbcProductDao.
+ * 
+ *  @author Neel Singhal
+ */
+public class JdbcProductDao extends GenericJdbcDao<Product, Integer> implements
+		ProductDao {
+	
+	/**
+	 * @return the table name.
+	 */
+	@Override
+	protected String getTableName() {
 		return "Products";
 	}
 
-	@Override protected Product extractResultSetRow(final ResultSet resultSet)
-	{
+	/**
+	 * @return the product.
+	 */
+	@Override
+	protected Product extractResultSetRow(final ResultSet resultSet) {
 		Product product = new Product();
 
-		try
-		{
+		try {
 			product.setName(resultSet.getString("name"));
 			product.setImg(resultSet.getString("img"));
 			product.setId(resultSet.getInt("id"));
 			product.setPrice(resultSet.getInt("price"));
-		}
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return product;
 	}
 
-	@Override protected String getPrimaryKeyColoumnName()
-	{
+	/**
+	 * @return the column name of Primary Key.
+	 */
+	@Override
+	protected String getPrimaryKeyColoumnName() {
 		return "id";
 	}
+
 }
