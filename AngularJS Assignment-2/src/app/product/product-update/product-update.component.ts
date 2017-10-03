@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Observable } from 'rxjs/Observable';
-import { Product } from './product';
-import { ProductService } from './product.service';
+import { Product } from '../../model/product';
+import { ProductService } from '../../services/product.service';
 
 import 'rxjs/add/operator/switchMap';
 

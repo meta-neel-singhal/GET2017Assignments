@@ -12,8 +12,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { Product } from './product';
-import { ProductSearchService } from './product-search.service';
+import { Product } from '../../model/product';
+import { ProductSearchService } from '../../services/product-search.service';
 
 @Component({
     selector: 'app-product-search',

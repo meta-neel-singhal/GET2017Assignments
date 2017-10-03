@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from '../product/product';
-import { CartService } from "./cart.service";
+import { Product } from '../model/product';
+import { CartService } from "../services/cart.service";
 import { Router } from '@angular/router';
 
 // Class for checkout component.
@@ -20,6 +20,7 @@ export class CheckoutComponent implements OnInit {
     // Run on component initialization.
     ngOnInit() {
         this.getCartProducts();
+        this.getTotal();
     }
 
     // Get all Card products.
@@ -28,21 +29,19 @@ export class CheckoutComponent implements OnInit {
     }
 
     // Get total price of the cart products.
-    getTotal(): number {
-        let total = 0;
-        for (var i = 0; i < this.products.length; i++) {
+    getTotal(): void {
+        
+        for (let i = 0; i < this.products.length; i++) {
             if (this.products[i].price) {
-                total += this.products[i].price;
-                this.totalPrice = total;
+                this.totalPrice += this.products[i].price;
+                //this.totalPrice = total;
             }
         }
-
-        return total;
     }
 
     // Empty the cart.
     emptyCart(): void {
-        this.products.splice(0, this.products.length);
+        this.products = [];
         this.router.navigate(['./products']);
     }
 }

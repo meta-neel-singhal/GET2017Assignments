@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../product/product';
+import { Product } from '../model/product';
 
 // Cart service for functions related to cart.
 @Injectable()

@@ -10,20 +10,20 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductSearchComponent } from './product/product-search.component';
+import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { ContactUsComponent } from "./contact/contact.component";
-import { ProductDetailsComponent } from './product/product-details.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductAddComponent } from './product/product-add.component';
-import { ProductUpdateComponent } from './product/product-update.component';
-import { ProductDeleteComponent } from './product/product-delete.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from "./cart/checkout.component";
+import { CheckoutComponent } from "./checkout/checkout.component";
 
-import { DashboardService } from "./dashboard/dashboard.service";
-import { ProductService } from './product/product.service';
-import { ProductSearchService } from './product/product-search.service'
-import { CartService } from './cart/cart.service';
+import { DashboardService } from "./services/dashboard.service";
+import { ProductService } from './services/product.service';
+import { ProductSearchService } from './services/product-search.service'
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [

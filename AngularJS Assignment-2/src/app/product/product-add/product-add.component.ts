@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ProductService } from './product.service';
+import { ProductService } from '../../services/product.service';
 import { Location } from '@angular/common';
 
-import { Product } from './product'
+import { Product } from '../../model/product'
 
 @Component({
     selector: 'app-product-add',

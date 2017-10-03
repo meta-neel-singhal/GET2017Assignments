@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { OFFERS } from './dashboard-mock';
+import { OFFERS } from '../dashboard/dashboard-mock';
 
 // Dashboard service for functions related to dashboard.
 @Injectable()

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { Product } from './product';
+import { Product } from '../model/product';
 //import { PRODUCTS } from './product-mock';
-import { ProductService } from './product.service';
-import { CartService } from '../cart/cart.service';
+import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
     selector: 'app-product',
