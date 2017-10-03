@@ -1,0 +1,59 @@
+.card-title {
+    font-family: 'Acme', sans-serif;
+    font-size: 30px;
+}
+
+.card-text {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.card-outline {
+    outline: none ;   
+}
+
+.card-block:hover {
+    transform: scale(1.1, 1.1);
+    color: #B98800;
+}
+
+.create {
+    font-family: 'Acme', sans-serif;
+    font-size: 20px;
+    z-index: 1;
+    margin-left: -200px;
+    padding: 20px 70px;
+    transition: transform .25s;
+    position: fixed;
+    top: 310px;
+}
+
+.create:hover {
+    transform: translateX(175px);
+}
+
+.row button {
+    margin-bottom: 5px;
+}
+
+.options {
+    display: none;
+}
+
+.options button {
+    padding: 2px 5px;
+}  
+
+.prod-info {
+    padding-left: 70px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.prod-info span {
+    font-size: 18px;
+}
+
+.card-block:hover .options {
+    display: block;
+}

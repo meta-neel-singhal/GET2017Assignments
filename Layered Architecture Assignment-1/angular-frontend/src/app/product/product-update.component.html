@@ -1,0 +1,25 @@
+<section class="row" *ngIf="product">
+    <div class="container">
+        <h2 class="text-center">{{product.name}} details!</h2>
+        <div class="well">
+            <div class="col-md-6">
+                <img src={{product.img}} class="img-responsive">
+            </div>
+            <div>
+                <div>
+                    <label>Product ID: </label>{{product.id}}
+                </div>
+                <div>
+                    <label>Product Name: </label>
+                    <input [(ngModel)]="product.name" placeholder="Product Name" />
+                </div>
+                <div>
+                    <label>Product Price (Rs.): </label>
+                    <input [(ngModel)]="product.price" placeholder="Product Price" />
+                </div>
+                <button class="btn btn-primary" (click)="goBack()">Back</button>
+                <button class="btn btn-primary" (click)="save()">Save</button>
+            </div>
+        </div>
+    </div>
+</section>
