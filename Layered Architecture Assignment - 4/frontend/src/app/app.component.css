@@ -1,0 +1,47 @@
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.jumbotron h1 {
+    font-family: 'Lobster', cursive;
+}
+
+.jumbotron p {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.nav-font {
+    font-family: 'Cinzel', serif;
+}
+
+.navbar-toggle  {
+    position: relative;
+    top: -30px;
+    right: -10px;
+    z-index: 1;
+    background-color: #222;
+    color: #fff;
+}
+
+.icon-bar {
+    background-color: #fff;
+}
+
+.navbar-inverse {
+    margin-bottom: 50px;
+    border-radius: 0;
+    min-height: auto;
+    padding: 0px;
+}
+
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+footer {
+    background-color: #ccc;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}

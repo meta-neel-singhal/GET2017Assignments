@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="text-center">Add a Product</h2>
+  <div class="well text-center">
+    <div>
+      <label>Product name:</label>
+      <input class="form-control" #productName />
+    </div>
+    <div>
+      <label>Product price:</label>
+      <input class="form-control" #productPrice />
+    </div>
+    <div>
+      <label>Product Image:</label>
+      <input class="form-control" #productImage />
+    </div>
+    <button class="btn btn-primary" (click)="add(productName.value, productPrice.value, productImage.value)">
+    Add
+  </button>
+  </div>
+</div>
