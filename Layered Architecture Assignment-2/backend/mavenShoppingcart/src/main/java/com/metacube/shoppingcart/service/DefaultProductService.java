@@ -2,7 +2,7 @@ package com.metacube.shoppingcart.service;
 
 import com.metacube.shoppingcart.dao.product.ProductDao;
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
  * The Class DefaultProductService.

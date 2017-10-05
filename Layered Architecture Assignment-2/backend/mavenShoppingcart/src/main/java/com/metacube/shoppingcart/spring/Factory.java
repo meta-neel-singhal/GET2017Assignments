@@ -5,6 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * The Class Factory.
+ * 
+ * @author Neel Singhal
  */
 public class Factory {
 

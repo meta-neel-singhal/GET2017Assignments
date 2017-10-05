@@ -1,7 +1,7 @@
 package com.metacube.shoppingcart.service;
 
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
  * The interface ProductService.

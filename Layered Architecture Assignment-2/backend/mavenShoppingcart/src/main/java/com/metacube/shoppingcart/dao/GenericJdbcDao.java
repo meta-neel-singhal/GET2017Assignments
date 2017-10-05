@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
  * The class GenericJdbcDao to store and execute all the database queries.

@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.metacube.shoppingcart.facade.ProductFacade;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 import com.metacube.shoppingcart.spring.Factory;
 
 /**
@@ -36,7 +36,7 @@ public class ProductController {
 	 * @return the users
 	 */
 	@GET
-	@Path("/list")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProducts() {
 		return Response.status(Response.Status.OK)
@@ -51,7 +51,7 @@ public class ProductController {
 	 * @return the product by id
 	 */
 	@GET
-	@Path("/get/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getProductById(@PathParam("id") int id) {
 		return Response.status(Response.Status.OK)
@@ -65,7 +65,7 @@ public class ProductController {
 	 * @return the response
 	 */
 	@DELETE
-	@Path("/delete/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteProductById(@PathParam("id") int id) {
 		return Response.status(Response.Status.OK)
@@ -79,7 +79,7 @@ public class ProductController {
 	 * @return the response
 	 */
 	@POST
-	@Path("/add")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addProduct(Product product) {
@@ -103,7 +103,7 @@ public class ProductController {
 	 * @return the response
 	 */
 	@PUT
-	@Path("/edit/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response editProduct(Product product, @PathParam("id") int id) {

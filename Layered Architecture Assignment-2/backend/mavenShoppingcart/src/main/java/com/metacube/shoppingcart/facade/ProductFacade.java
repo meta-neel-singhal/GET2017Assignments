@@ -2,7 +2,7 @@ package com.metacube.shoppingcart.facade;
 
 import com.metacube.shoppingcart.dto.ProductDto;
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
  * The Interface ProductFacade.

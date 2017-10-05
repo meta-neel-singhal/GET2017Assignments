@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.metacube.shoppingcart.dao.GenericJdbcDao;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
  * The Class JdbcProductDao.

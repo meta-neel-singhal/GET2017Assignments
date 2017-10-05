@@ -1,4 +1,4 @@
-package com.metacube.shoppingcart.modal;
+package com.metacube.shoppingcart.model;
 
 /**
  * The class Product.

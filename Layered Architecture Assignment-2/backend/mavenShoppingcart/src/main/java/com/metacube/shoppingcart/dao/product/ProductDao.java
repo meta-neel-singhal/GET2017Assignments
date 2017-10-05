@@ -1,10 +1,10 @@
 package com.metacube.shoppingcart.dao.product;
 
 import com.metacube.shoppingcart.dao.AbstractDao;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 
 /**
- * The Class DefaultProductFacade.
+ * The Interface ProductDao.
  * 
  * @author Neel Singhal
  */

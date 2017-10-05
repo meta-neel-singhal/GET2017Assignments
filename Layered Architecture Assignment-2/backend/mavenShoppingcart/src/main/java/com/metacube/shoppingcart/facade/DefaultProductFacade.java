@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.metacube.shoppingcart.dto.ProductDto;
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.modal.Product;
+import com.metacube.shoppingcart.model.Product;
 import com.metacube.shoppingcart.service.ProductService;
 
 /**
