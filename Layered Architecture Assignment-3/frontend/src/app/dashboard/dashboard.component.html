@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let offer of offers">
+            <div class="panel panel-primary">
+                <div class="panel-heading">{{offer.day}}</div>
+                <div class="panel-body"><img src={{offer.img_url}} class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">{{offer.offer}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <!-- Create a card for each product. -->
+        <div class="col-xs-12 col-sm-6 col-md-4 card-outline" *ngFor="let product of products">
+            <div class="card mb-4 text-center">
+                <div class="card-block">
+                    <div class="col-sm-9 prod-info">
+                        <h4 class="card-title">{{product.name}}</h4>
+                        <p class="card-text">Product ID: {{product.id}}</p>
+                        <span>Rs. {{product.price}}</span>
+                    </div>
+                    <div class="col-sm-3 options">
+                        <button class="btn btn-primary" [routerLink]="['/detail', product.id]"><span class="glyphicon glyphicon-info-sign"></span></button>
+                        <app-product-delete (click)="deleteFromCart(product)"></app-product-delete>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="checkout text-center">
+    <button class="btn btn-success" [routerLink]="['/checkout']">Checkout</button>
+</div>
