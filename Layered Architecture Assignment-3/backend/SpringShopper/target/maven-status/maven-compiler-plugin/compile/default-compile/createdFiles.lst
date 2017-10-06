@@ -1,0 +1,13 @@
+com\metacube\Shopping\Product\dao\JdbcProductDao.class
+com\metacube\Shopping\dao\AbstractDao.class
+com\metacube\Shopping\dao\GenericJdbcDao.class
+com\metacube\Shopping\facade\ProductFacade.class
+com\metacube\Shopping\Product\dao\ProductDao.class
+com\metacube\Shopping\Controller\ProductController.class
+com\metacube\Shopping\dto\ProductDto.class
+com\metacube\Shopping\Service\DefaultProductService.class
+com\metacube\Shopping\Product\Model\Product.class
+com\metacube\Shopping\Service\ProductService.class
+com\metacube\Shopping\dao\JdbcConnectionFactory.class
+com\metacube\Shopping\facade\DefaultProductFacade.class
+com\metacube\Shopping\spring\Factory.class
