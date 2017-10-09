@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Product ID</th>
+                        <th class="text-center">Product Name</th>
+                        <th class="text-center">Price</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let product of products">
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                    </tr>
+                </tbody>
+                <tfoot class="text-center">
+                    <tr>
+                        <td colspan="2"><strong>Price</strong></td>
+                        <td><strong>{{totalPrice}}</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="checkout text-center">
+    <button class="btn btn-success" (click)="emptyCart()">Checkout</button>
+</div>
